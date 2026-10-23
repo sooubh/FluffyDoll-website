@@ -1,0 +1,6 @@
+# Robots.txt for FluffyDoll Official Privacy Policy
+User-agent: *
+Allow: /
+Allow: /privacy-policy
+
+Sitemap: https://YOUR_PRODUCTION_DOMAIN.com/sitemap.xml
