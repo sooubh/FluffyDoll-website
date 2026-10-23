@@ -1,7 +1,6 @@
 {
-  "name": "FluffyDoll Privacy Policy",
-  "description": "Official Privacy Policy documentation and Google Play Store compliance guide for FluffyDoll, a casual puzzle game built with Flutter and Flame.",
+  "name": "FluffyDoll — Game Website & Privacy Policy",
+  "description": "Official showcase website and Google Play Store compliance documentation for FluffyDoll, a cozy casual puzzle game built with Flutter & Flame for Android.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": []
 }
-

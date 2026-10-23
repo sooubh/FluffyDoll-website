@@ -1,67 +1,54 @@
-# FluffyDoll — Next.js (App Router) Project Guide
+# FluffyDoll — Official Game Website & Privacy Policy Documentation
 
-This project is fully structured and coded for **Next.js with App Router**, **TypeScript**, and **Tailwind CSS**, ready for immediate 1-click deployment to **Vercel** or any Next.js hosting provider.
+A fast, responsive, and beautifully crafted official showcase website for **FluffyDoll**, an Android casual puzzle game engineered with **Google Flutter** and the **Flame 2D engine**.
+
+Built with **Next.js 15 (App Router)**, **TypeScript**, and **Tailwind CSS v4**, configured for instant 1-click deployment to **Vercel**.
 
 ---
 
-## Next.js Project Structure
+## Architecture & Routes
 
-The project includes standard Next.js App Router files:
+| Route | Purpose | Description |
+|---|---|---|
+| `/` | **Official Game Website** | High-converting landing page with interactive mini-game demo, 6 core feature highlights, meet the dolls gallery, booster mechanics, Android specs, accessible FAQ, and Google Play download CTAs. |
+| `/privacy-policy` | **Google Play Legal Policy** | Comprehensive 16-section legal Privacy Policy & Data Safety declaration required for Google Play Console submission. Includes quick print/PDF export and back-navigation. |
+| `/robots.txt` | **SEO Crawler Directives** | Native Next.js Metadata Route dynamically resolving to the deployment domain. |
+| `/sitemap.xml` | **Search Engine Sitemap** | Native Next.js Metadata Route for optimal Google search indexing. |
 
+---
+
+## Features Included
+
+- **🎮 Interactive Hero Mini-Game (`GameShowcase.tsx`)**: Playable squish-physics puzzle preview directly in the browser with combos, points, and booster animations.
+- **🧸 Meet the Dolls Gallery (`DollsGallery.tsx`)**: Interactive character showcase for BunBun, PuffBear, Mochi Kitty, and Dottie Pup with softness, bounce, and fluff stat bars.
+- **⚡ Android & Flame Specs (`TechSpecs.tsx`)**: Device compatibility, Android 8.0+ support, 60/120 FPS high refresh rate notes, and offline-first performance specs.
+- **❓ Accessible FAQ Accordion (`FaqSection.tsx`)**: Native semantic `<details name="faq">` elements supporting deep-linking, browser in-page search findability, and zero JavaScript bloat.
+- **📜 Verified Legal Protection (`/privacy-policy`)**: Full 16-section COPPA/GDPR/Google Play compliance documentation, developer contact details, and data erasure request guidelines.
+- **🚀 Vercel Production Optimized**: Includes `vercel.json` with security headers (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`) and cross-platform native Tailwind CSS v4 bindings.
+
+---
+
+## Deployment to Vercel
+
+### Step 1: Push to GitHub
+```bash
+git add .
+git commit -m "feat: complete FluffyDoll official game website and privacy policy"
+git push origin main
 ```
-├── src/
-│   ├── app/
-│   │   ├── layout.tsx             # Root layout with SEO metadata & canonical tags
-│   │   ├── page.tsx               # Main Privacy Policy page (/)
-│   │   ├── privacy-policy/
-│   │   │   └── page.tsx           # Canonical Privacy Policy route (/privacy-policy)
-│   │   ├── globals.css            # Tailwind CSS v4 imports & @media print styles
-│   │   ├── robots.ts              # Next.js Metadata Route for robots.txt
-│   │   └── sitemap.ts             # Next.js Metadata Route for sitemap.xml
-│   ├── components/
-│   │   ├── FluffyDollLogo.tsx     # Clean SVG brand logo
-│   │   ├── Header.tsx             # 'use client' header with PDF/Print trigger
-│   │   ├── TableOfContents.tsx    # Compact in-page navigation grid
-│   │   ├── PolicySectionCard.tsx  # Unboxed, high-legibility legal section
-│   │   ├── ContactSection.tsx     # Verified contact & 30-day deletion notice
-│   │   └── Footer.tsx             # Minimal legal footer
-│   └── data/
-│       └── policyData.ts          # Structured policy text (Sections 1–16) & placeholders
-├── public/
-│   ├── robots.txt                 # Fallback static robots.txt
-│   └── sitemap.xml                # Fallback static sitemap.xml
-├── next.config.mjs                # Next.js configuration
-├── postcss.config.mjs             # PostCSS with @tailwindcss/postcss
-├── tsconfig.json                  # Next.js & TypeScript configuration
-└── PRIVACY_POLICY_REVIEW.md       # Pre-submission Google Play checklist
-```
+
+### Step 2: Import into Vercel
+1. Go to [vercel.com/new](https://vercel.com/new).
+2. Select repository **FluffyDoll-website**.
+3. Framework Preset: **Next.js** (auto-detected).
+4. Click **Deploy**.
 
 ---
 
-## Deploying to Vercel in 2 Steps
-
-1. **Push to GitHub**:
-   Push this repository to your GitHub account.
-
-2. **Deploy on Vercel**:
-   - Go to [vercel.com/new](https://vercel.com/new)
-   - Select this repository.
-   - Vercel automatically detects **Next.js** and runs:
-     - Framework: **Next.js**
-     - Build Command: `next build`
-     - Output Directory: `.next`
-   - Click **Deploy**!
-
----
-
-## Local Development with Next.js
-
-To run the Next.js dev server locally on your machine:
+## Local Development
 
 ```bash
 npm run dev
-# or
-npx next dev -p 3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) or [http://localhost:3000/privacy-policy](http://localhost:3000/privacy-policy) to view the site.
+Open [http://localhost:3000](http://localhost:3000) to view the game landing page or [http://localhost:3000/privacy-policy](http://localhost:3000/privacy-policy) for the legal policy.

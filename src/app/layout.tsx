@@ -1,22 +1,52 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
+const getBaseUrl = () => {
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return process.env.NEXT_PUBLIC_SITE_URL.startsWith('http')
+      ? process.env.NEXT_PUBLIC_SITE_URL
+      : `https://${process.env.NEXT_PUBLIC_SITE_URL}`;
+  }
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  }
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+  return 'https://fluffydoll.vercel.app';
+};
+
 export const metadata: Metadata = {
-  title: 'FluffyDoll — Official Privacy Policy',
-  description: 'Official Privacy Policy documentation and Google Play Store compliance guide for FluffyDoll, a casual puzzle game built with Flutter and Flame for Android.',
-  metadataBase: new URL('https://YOUR_PRODUCTION_DOMAIN.com'),
-  alternates: {
-    canonical: '/privacy-policy',
+  title: {
+    default: 'FluffyDoll — Cozy Casual Puzzle Game for Android',
+    template: '%s | FluffyDoll',
   },
+  description: 'Squish, match, and smile! FluffyDoll is a delightfully cozy 2D plush physics puzzle adventure built with Flutter & Flame for Android devices.',
+  metadataBase: new URL(getBaseUrl()),
+  alternates: {
+    canonical: '/',
+  },
+  keywords: [
+    'FluffyDoll',
+    'Flutter Game',
+    'Flame Engine',
+    'Android Casual Game',
+    'Cozy Puzzle Game',
+    'Squishy Physics',
+    'Offline Android Game',
+    'Match 3 Puzzle',
+  ],
   openGraph: {
-    title: 'FluffyDoll — Official Privacy Policy',
-    description: 'Official Privacy Policy documentation and Google Play Store compliance guide for FluffyDoll, a casual puzzle game built with Flutter and Flame for Android.',
+    title: 'FluffyDoll — Cozy Casual Puzzle Game for Android',
+    description: 'Squish, match, and smile! FluffyDoll is a delightfully cozy 2D plush physics puzzle adventure built with Flutter & Flame for Android.',
+    url: '/',
+    siteName: 'FluffyDoll Official Game Website',
     type: 'website',
   },
   twitter: {
-    card: 'summary',
-    title: 'FluffyDoll — Official Privacy Policy',
-    description: 'Official Privacy Policy documentation and Google Play Store compliance guide for FluffyDoll.',
+    card: 'summary_large_image',
+    title: 'FluffyDoll — Cozy Casual Puzzle Game for Android',
+    description: 'Squish, match, and smile with FluffyDoll on Android!',
   },
 };
 
@@ -28,7 +58,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body 
-        className="bg-white text-stone-800 antialiased selection:bg-pink-100 selection:text-pink-900 min-h-screen" 
+        className="bg-white text-stone-900 antialiased selection:bg-pink-100 selection:text-pink-900 min-h-screen" 
         suppressHydrationWarning
       >
         {children}

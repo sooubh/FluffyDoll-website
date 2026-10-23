@@ -1,56 +1,48 @@
 import React from 'react';
-import { POLICY_METADATA, POLICY_SECTIONS } from '../data/policyData';
-import { Header } from '../components/Header';
-import { TableOfContents } from '../components/TableOfContents';
-import { PolicySectionCard } from '../components/PolicySectionCard';
-import { ContactSection } from '../components/ContactSection';
-import { Footer } from '../components/Footer';
+import { GameNavbar } from '../components/GameNavbar';
+import { HeroSection } from '../components/HeroSection';
+import { FeaturesSection } from '../components/FeaturesSection';
+import { DollsGallery } from '../components/DollsGallery';
+import { GameMechanics } from '../components/GameMechanics';
+import { TechSpecs } from '../components/TechSpecs';
+import { FaqSection } from '../components/FaqSection';
+import { DownloadCta } from '../components/DownloadCta';
+import { GameFooter } from '../components/GameFooter';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white text-stone-800 font-sans antialiased selection:bg-pink-100 selection:text-pink-900">
+    <div className="min-h-screen bg-white text-stone-900 font-sans antialiased selection:bg-pink-100 selection:text-pink-900">
       <div id="top" />
-      
-      {/* Minimal Header */}
-      <Header />
 
-      {/* Main Document Reading Column (700-850px) */}
-      <main className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-16">
-        
-        {/* Document Header */}
-        <header className="mb-6">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">
-            Privacy Policy
-          </h1>
+      {/* Modern Game Navigation Bar */}
+      <GameNavbar />
 
-          <p className="mt-2 text-xs sm:text-sm text-stone-500">
-            <span>Effective Date: <strong>{POLICY_METADATA.effectiveDate}</strong></span>
-            <span className="mx-2" aria-hidden="true">·</span>
-            <span>Last Updated: <strong>{POLICY_METADATA.lastUpdated}</strong></span>
-          </p>
+      {/* Main Game Showcase Content */}
+      <main>
+        {/* Hero Section with Interactive Mini-Game */}
+        <HeroSection />
 
-          <p className="mt-4 text-sm sm:text-base text-stone-600 leading-relaxed">
-            This Privacy Policy describes how information is collected, used, and disclosed in connection with the mobile application <strong>FluffyDoll</strong>, a casual puzzle game built with Flutter and Flame for Android devices.
-          </p>
-        </header>
+        {/* 6 Key Gameplay Highlights */}
+        <FeaturesSection />
 
-        {/* Compact Table of Contents */}
-        <TableOfContents />
+        {/* Interactive Doll Gallery (BunBun, PuffBear, Mochi, Dottie) */}
+        <DollsGallery />
 
-        {/* Complete Policy Sections */}
-        <div>
-          {POLICY_SECTIONS.map((section) => (
-            <PolicySectionCard key={section.id} section={section} />
-          ))}
-        </div>
+        {/* How to Play & Boosters Showcase */}
+        <GameMechanics />
 
-        {/* Contact and Data Deletion Section */}
-        <ContactSection />
+        {/* Android Specs & Flutter Engine Specs */}
+        <TechSpecs />
 
+        {/* Accessible FAQ Accordion */}
+        <FaqSection />
+
+        {/* Download Banner on Google Play */}
+        <DownloadCta />
       </main>
 
-      {/* Minimal Footer */}
-      <Footer />
+      {/* Polished Game Footer with Legal Links */}
+      <GameFooter />
     </div>
   );
 }
