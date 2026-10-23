@@ -1,10 +1,10 @@
 import React from 'react';
-import { POLICY_METADATA, POLICY_SECTIONS } from '@/src/data/policyData';
-import { Header } from '@/src/components/Header';
-import { TableOfContents } from '@/src/components/TableOfContents';
-import { PolicySectionCard } from '@/src/components/PolicySectionCard';
-import { ContactSection } from '@/src/components/ContactSection';
-import { Footer } from '@/src/components/Footer';
+import { POLICY_METADATA, POLICY_SECTIONS } from '../data/policyData';
+import { Header } from '../components/Header';
+import { TableOfContents } from '../components/TableOfContents';
+import { PolicySectionCard } from '../components/PolicySectionCard';
+import { ContactSection } from '../components/ContactSection';
+import { Footer } from '../components/Footer';
 
 export default function HomePage() {
   return (
