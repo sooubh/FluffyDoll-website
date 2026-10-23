@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
       <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
           <p>
-            &copy; {new Date().getFullYear()} FluffyDoll · Android Casual Puzzle Game.
+            &copy; 2026 FluffyDoll · Android Casual Puzzle Game.
           </p>
           <p className="text-[11px] text-stone-400 mt-0.5">
             Effective: {POLICY_METADATA.effectiveDate} · Last Updated: {POLICY_METADATA.lastUpdated}

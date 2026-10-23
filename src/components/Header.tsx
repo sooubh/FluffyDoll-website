@@ -14,6 +14,7 @@ export const Header: React.FC = () => {
         <div className="flex items-center gap-4 text-xs text-stone-500">
           <span className="hidden sm:inline">Android Casual Puzzle Game</span>
           <button 
+            type="button"
             onClick={() => window.print()}
             className="no-print text-stone-600 hover:text-stone-900 underline font-medium cursor-pointer"
             title="Print or export Privacy Policy to PDF"
