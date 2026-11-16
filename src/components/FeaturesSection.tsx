@@ -1,72 +1,5 @@
 import React from 'react';
 
-interface FeatureCardItem {
-  icon: string;
-  badge: string;
-  badgeColor: string;
-  title: string;
-  description: string;
-  gradient: string;
-  borderHover: string;
-}
-
-const FEATURES: FeatureCardItem[] = [
-  {
-    icon: '🧸',
-    badge: 'Physics Engine',
-    badgeColor: 'bg-pink-100 text-pink-700 border-pink-200',
-    title: 'Squishy Plush Physics',
-    description: 'Every doll is modeled with responsive soft-body physics using the Flame 2D engine. Watch them squish, tumble, bounce, and react to every touch.',
-    gradient: 'from-pink-50/50 to-white',
-    borderHover: 'hover:border-pink-300',
-  },
-  {
-    icon: '👗',
-    badge: 'Customization',
-    badgeColor: 'bg-purple-100 text-purple-700 border-purple-200',
-    title: 'Doll Closet & Styling',
-    description: 'Collect ribbons, cozy knit hats, pastel bows, and dreamy seasonal outfits. Dress your plush squad and customize your game home.',
-    gradient: 'from-purple-50/50 to-white',
-    borderHover: 'hover:border-purple-300',
-  },
-  {
-    icon: '☁️',
-    badge: '200+ Puzzles',
-    badgeColor: 'bg-amber-100 text-amber-800 border-amber-200',
-    title: 'Cozy, Stress-Free Levels',
-    description: 'Say goodbye to harsh failure timers and high-pressure paywalls. Enjoy gentle ambient soundtracks and relaxing satisfying puzzle challenges.',
-    gradient: 'from-amber-50/50 to-white',
-    borderHover: 'hover:border-amber-300',
-  },
-  {
-    icon: '📴',
-    badge: 'Zero Wi-Fi',
-    badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-    title: '100% Offline Playable',
-    description: 'No Wi-Fi? Cellular dead zone? Airplane mode? FluffyDoll plays completely offline anytime, anywhere without interrupting your groove.',
-    gradient: 'from-emerald-50/50 to-white',
-    borderHover: 'hover:border-emerald-300',
-  },
-  {
-    icon: '🛡️',
-    badge: 'COPPA Certified',
-    badgeColor: 'bg-sky-100 text-sky-800 border-sky-200',
-    title: 'Safe for All Ages',
-    description: 'Designed from the ground up for family safety, complying with Google Play Families and COPPA guidelines. Zero invasive permissions or hidden tracking.',
-    gradient: 'from-sky-50/50 to-white',
-    borderHover: 'hover:border-sky-300',
-  },
-  {
-    icon: '⚡',
-    badge: 'Butter Smooth',
-    badgeColor: 'bg-rose-100 text-rose-800 border-rose-200',
-    title: 'Featherlight 60 FPS',
-    description: 'High-performance Flutter architecture ensures fast startup in under a second, under 40 MB install size, and silky 60 FPS with gentle battery usage.',
-    gradient: 'from-rose-50/50 to-white',
-    borderHover: 'hover:border-rose-300',
-  },
-];
-
 export const FeaturesSection: React.FC = () => {
   return (
     <section id="features" className="py-20 sm:py-28 bg-white border-y border-stone-200/60">
@@ -78,45 +11,95 @@ export const FeaturesSection: React.FC = () => {
             Wholesome Gameplay
           </span>
           <h2 className="mt-4 text-3xl sm:text-4xl font-black text-stone-900 tracking-tight">
-            Why Players Fall in Love with FluffyDoll
+            Designed for Pure Relaxation
           </h2>
           <p className="mt-4 text-base text-stone-600 leading-relaxed">
-            Crafted for pure relaxation, thoughtful puzzle-solving, and delightful plush doll magic. Every feature is tuned for your comfort.
+            No energy bars. No countdown timers. No pay-to-win roadblocks. Just squishy plush puzzles handcrafted to help you unwind.
           </p>
         </div>
 
-        {/* 6 Feature Grid Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {FEATURES.map((item, idx) => (
-            <div
-              key={idx}
-              className={`group relative rounded-3xl p-6 sm:p-7 border border-stone-200/80 bg-gradient-to-b ${item.gradient} transition-all duration-300 hover:shadow-xl hover:shadow-pink-100/50 hover:-translate-y-1 ${item.borderHover}`}
-            >
-              {/* Card Top: Icon & Badge */}
-              <div className="flex items-center justify-between mb-5">
-                <div className="w-13 h-13 rounded-2xl bg-white shadow-xs border border-stone-100 flex items-center justify-center text-3xl transition-transform group-hover:scale-110">
-                  {item.icon}
-                </div>
-                <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full border ${item.badgeColor}`}>
-                  {item.badge}
-                </span>
+        {/* Feature Grid with Varied Rhythm */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8">
+          
+          {/* Main Hero Feature Card: Soft-Body Physics */}
+          <div className="md:col-span-12 lg:col-span-7 rounded-3xl p-8 sm:p-10 bg-gradient-to-br from-pink-50 via-[#FFF8F6] to-white border border-pink-200/80 shadow-xs flex flex-col justify-between">
+            <div>
+              <div className="w-14 h-14 rounded-2xl bg-white shadow-2xs border border-pink-100 flex items-center justify-center text-3xl mb-6">
+                🧸
               </div>
-
-              {/* Title & Description */}
-              <h3 className="text-xl font-bold text-stone-900 tracking-tight group-hover:text-pink-600 transition-colors">
-                {item.title}
+              <h3 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">
+                Authentic Soft-Body Physics
               </h3>
-              <p className="mt-2.5 text-sm text-stone-600 leading-relaxed">
-                {item.description}
+              <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed max-w-xl">
+                Unlike rigid tile-matching games, FluffyDoll simulates genuine plush fabric physics using the Flame 2D game engine. Plushies softly compress when stacked, gently tumble, and bounce with satisfying tactile feedback every time you make a match.
               </p>
-
-              {/* Decorative Stitch Line */}
-              <div className="mt-6 pt-4 border-t border-dashed border-stone-200 flex items-center justify-between text-xs text-stone-400 font-mono">
-                <span>✦ Flutter + Flame</span>
-                <span>Ready ✦</span>
-              </div>
             </div>
-          ))}
+
+            <div className="mt-8 pt-6 border-t border-pink-100/80 flex flex-wrap gap-4 text-xs font-bold text-pink-800">
+              <span className="bg-white/80 px-3 py-1 rounded-full border border-pink-200/60">Flame 2D Physics</span>
+              <span className="bg-white/80 px-3 py-1 rounded-full border border-pink-200/60">Tactile Haptics</span>
+              <span className="bg-white/80 px-3 py-1 rounded-full border border-pink-200/60">Silky 60 FPS</span>
+            </div>
+          </div>
+
+          {/* Feature 2: Zero Pressure & Ambient Vibes */}
+          <div className="md:col-span-6 lg:col-span-5 rounded-3xl p-8 bg-gradient-to-br from-amber-50/70 via-[#FFFDF9] to-white border border-amber-200/80 shadow-xs flex flex-col justify-between">
+            <div>
+              <div className="w-14 h-14 rounded-2xl bg-white shadow-2xs border border-amber-100 flex items-center justify-center text-3xl mb-6">
+                ☕
+              </div>
+              <h3 className="text-xl sm:text-2xl font-black text-stone-900 tracking-tight">
+                Zero Pressure, Zero Rush
+              </h3>
+              <p className="mt-3 text-sm text-stone-600 leading-relaxed">
+                Take as long as you want on every move. Enjoy calming lo-fi acoustic melodies and soft bell chimes designed to calm your mind after a busy day.
+              </p>
+            </div>
+
+            <div className="mt-6 pt-4 text-xs font-semibold text-amber-800">
+              ✨ Infinite undo options · No countdown clocks
+            </div>
+          </div>
+
+          {/* Feature 3: 100% Offline Freedom */}
+          <div className="md:col-span-6 lg:col-span-4 rounded-3xl p-7 bg-gradient-to-br from-emerald-50/70 via-[#F9FDFB] to-white border border-emerald-200/80 shadow-xs">
+            <div className="w-12 h-12 rounded-2xl bg-white shadow-2xs border border-emerald-100 flex items-center justify-center text-2xl mb-5">
+              📴
+            </div>
+            <h3 className="text-lg sm:text-xl font-bold text-stone-900 tracking-tight">
+              100% Offline Freedom
+            </h3>
+            <p className="mt-2 text-xs sm:text-sm text-stone-600 leading-relaxed">
+              Play during subway commutes, flights, or cozy cabin getaways. All levels and puzzle logic execute entirely on your phone without demanding mobile data.
+            </p>
+          </div>
+
+          {/* Feature 4: Doll Styling Closet */}
+          <div className="md:col-span-6 lg:col-span-4 rounded-3xl p-7 bg-gradient-to-br from-purple-50/70 via-[#FCF9FD] to-white border border-purple-200/80 shadow-xs">
+            <div className="w-12 h-12 rounded-2xl bg-white shadow-2xs border border-purple-100 flex items-center justify-center text-2xl mb-5">
+              👗
+            </div>
+            <h3 className="text-lg sm:text-xl font-bold text-stone-900 tracking-tight">
+              Plushie Wardrobe
+            </h3>
+            <p className="mt-2 text-xs sm:text-sm text-stone-600 leading-relaxed">
+              Earn ribbons, knit hats, and cozy seasonal scarves simply by completing levels. Dress your plush squad and customize your game home.
+            </p>
+          </div>
+
+          {/* Feature 5: Lightweight & Battery Friendly */}
+          <div className="md:col-span-6 lg:col-span-4 rounded-3xl p-7 bg-gradient-to-br from-sky-50/70 via-[#F9FCFE] to-white border border-sky-200/80 shadow-xs">
+            <div className="w-12 h-12 rounded-2xl bg-white shadow-2xs border border-sky-100 flex items-center justify-center text-2xl mb-5">
+              ⚡
+            </div>
+            <h3 className="text-lg sm:text-xl font-bold text-stone-900 tracking-tight">
+              Featherlight on Storage
+            </h3>
+            <p className="mt-2 text-xs sm:text-sm text-stone-600 leading-relaxed">
+              Under 40 MB install size. Highly optimized Flutter architecture keeps battery drain minimal and loads in less than one second.
+            </p>
+          </div>
+
         </div>
 
       </div>

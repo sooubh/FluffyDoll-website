@@ -7,8 +7,8 @@ interface SectionCardProps {
 
 export const PolicySectionCard: React.FC<SectionCardProps> = ({ section }) => {
   const renderFormattedText = (text: string) => {
-    // Regex splits markdown bold, markdown link, inline code, and standalone URLs
-    const parts = text.split(/(\*\*.*?\*\*|\[.*?\]\(.*?\)|\`.*?\`|https?:\/\/[^\s)]+)/g);
+    // Regex splits markdown bold, markdown link, inline code, standalone URLs, and emails
+    const parts = text.split(/(\*\*.*?\*\*|\[.*?\]\(.*?\)|\`.*?\`|https?:\/\/[^\s)]+|[\w.-]+@[\w.-]+\.\w+)/g);
 
     return (
       <>
@@ -66,6 +66,18 @@ export const PolicySectionCard: React.FC<SectionCardProps> = ({ section }) => {
             );
           }
 
+          if (part.includes('@') && !part.includes(' ') && part.includes('.')) {
+            return (
+              <a
+                key={index}
+                href={`mailto:${part}`}
+                className="text-pink-600 underline font-medium hover:text-pink-800 transition-colors"
+              >
+                {part}
+              </a>
+            );
+          }
+
           return part;
         })}
       </>
@@ -73,12 +85,12 @@ export const PolicySectionCard: React.FC<SectionCardProps> = ({ section }) => {
   };
 
   const renderTable = (table: PolicyTable) => (
-    <div className="overflow-x-auto my-4 rounded-xl border border-stone-200 shadow-2xs">
+    <div className="overflow-x-auto my-4 rounded-2xl border border-stone-200/80 shadow-2xs">
       <table className="min-w-full divide-y divide-stone-200 text-left text-xs sm:text-sm">
-        <thead className="bg-stone-50 text-stone-800 font-semibold uppercase tracking-wider text-[11px]">
+        <thead className="bg-[#FAF8F5] text-stone-800 font-bold uppercase tracking-wider text-[11px]">
           <tr>
             {table.headers.map((h, i) => (
-              <th key={i} scope="col" className="px-4 py-3 bg-stone-100/70 border-b border-stone-200 font-bold">
+              <th key={i} scope="col" className="px-4 py-3 border-b border-stone-200/80 font-bold">
                 {h}
               </th>
             ))}
@@ -147,12 +159,12 @@ export const PolicySectionCard: React.FC<SectionCardProps> = ({ section }) => {
   return (
     <section 
       id={section.id} 
-      className="scroll-mt-16 py-7 border-b border-stone-200/70 last:border-b-0 print-section relative"
+      className="scroll-mt-20 py-8 border-b border-stone-200/70 last:border-b-0 print-section relative"
     >
       {/* Anchor aliases for backward compatibility */}
-      {section.id === 'section-15' && <span id="contact-and-deletion" className="absolute -top-16" />}
+      {section.id === 'section-15' && <span id="contact-and-deletion" className="absolute -top-20" />}
 
-      <h2 className="text-xl sm:text-2xl font-bold text-stone-900 tracking-tight mb-4">
+      <h2 className="text-xl sm:text-2xl font-black text-stone-900 tracking-tight mb-4">
         {section.number}. {section.title}
       </h2>
 
@@ -165,11 +177,11 @@ export const PolicySectionCard: React.FC<SectionCardProps> = ({ section }) => {
       {section.table && renderTable(section.table)}
 
       {section.subsections && section.subsections.length > 0 && (
-        <div className="mt-5 space-y-6 pl-0 sm:pl-2">
+        <div className="mt-6 space-y-6 pl-0 sm:pl-2">
           {section.subsections.map((sub, sIdx) => (
-            <div key={sIdx} id={sub.id} className="space-y-2 relative">
-              {sub.id === 'section-2-8' && <span id="section-16" className="absolute -top-16" />}
-              <h3 className="text-base sm:text-lg font-semibold text-stone-900">
+            <div key={sIdx} id={sub.id} className="space-y-2 relative scroll-mt-20">
+              {sub.id === 'section-2-8' && <span id="section-16" className="absolute -top-20" />}
+              <h3 className="text-base sm:text-lg font-bold text-stone-900">
                 {sub.title}
               </h3>
 

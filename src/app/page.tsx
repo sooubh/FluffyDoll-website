@@ -11,7 +11,7 @@ import { GameFooter } from '../components/GameFooter';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white text-stone-900 font-sans antialiased selection:bg-pink-100 selection:text-pink-900">
+    <div className="min-h-screen bg-[#FFFDFB] text-stone-900 font-sans antialiased selection:bg-pink-100 selection:text-pink-900">
       <div id="top" />
 
       {/* Modern Game Navigation Bar */}
@@ -22,7 +22,7 @@ export default function HomePage() {
         {/* Hero Section with Interactive Mini-Game */}
         <HeroSection />
 
-        {/* 6 Key Gameplay Highlights */}
+        {/* Key Gameplay Highlights */}
         <FeaturesSection />
 
         {/* Interactive Doll Gallery (BunBun, PuffBear, Mochi, Dottie) */}
@@ -31,7 +31,7 @@ export default function HomePage() {
         {/* How to Play & Boosters Showcase */}
         <GameMechanics />
 
-        {/* Android Specs & Flutter Engine Specs */}
+        {/* Android Compatibility & Standards */}
         <TechSpecs />
 
         {/* Accessible FAQ Accordion */}
