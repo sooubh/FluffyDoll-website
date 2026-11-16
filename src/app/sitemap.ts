@@ -12,7 +12,7 @@ const getBaseUrl = () => {
   if (process.env.VERCEL_URL) {
     return `https://${process.env.VERCEL_URL}`;
   }
-  return 'https://fluffydoll.vercel.app';
+  return 'https://fluffydoll.sooubh.in';
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -21,13 +21,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: `${baseUrl}/`,
-      lastModified: new Date('2026-10-23'),
+      lastModified: new Date('2026-11-16'),
       changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
       url: `${baseUrl}/privacy-policy`,
-      lastModified: new Date('2026-10-23'),
+      lastModified: new Date('2026-11-16'),
       changeFrequency: 'monthly',
       priority: 0.9,
     },

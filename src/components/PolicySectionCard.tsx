@@ -1,5 +1,5 @@
 import React from 'react';
-import { PolicySectionItem } from '../data/policyData';
+import { PolicySectionItem, PolicyTable } from '../data/policyData';
 
 interface SectionCardProps {
   section: PolicySectionItem;
@@ -7,11 +7,14 @@ interface SectionCardProps {
 
 export const PolicySectionCard: React.FC<SectionCardProps> = ({ section }) => {
   const renderFormattedText = (text: string) => {
-    const parts = text.split(/(\*\*.*?\*\*|\[.*?\]\(.*?\)|\[ACTION REQUIRED:.*?\])/g);
+    // Regex splits markdown bold, markdown link, inline code, and standalone URLs
+    const parts = text.split(/(\*\*.*?\*\*|\[.*?\]\(.*?\)|\`.*?\`|https?:\/\/[^\s)]+)/g);
 
     return (
       <>
         {parts.map((part, index) => {
+          if (!part) return null;
+
           if (part.startsWith('**') && part.endsWith('**')) {
             return (
               <strong key={index} className="font-semibold text-stone-900">
@@ -19,83 +22,164 @@ export const PolicySectionCard: React.FC<SectionCardProps> = ({ section }) => {
               </strong>
             );
           }
-          if (part.startsWith('[ACTION REQUIRED:') && part.endsWith(']')) {
+
+          if (part.startsWith('`') && part.endsWith('`')) {
             return (
-              <span
+              <code
                 key={index}
-                className="bg-amber-50 text-amber-900 border border-amber-300 font-mono text-xs px-1.5 py-0.5 rounded select-all"
-                title="Action required by developer before Google Play publication"
+                className="px-1.5 py-0.5 rounded bg-stone-100 border border-stone-200/80 font-mono text-xs text-stone-800"
               >
-                {part}
-              </span>
+                {part.slice(1, -1)}
+              </code>
             );
           }
+
           if (part.startsWith('[') && part.includes('](') && part.endsWith(')')) {
             const match = part.match(/\[(.*?)\]\((.*?)\)/);
             if (match) {
+              const [, label, href] = match;
               return (
                 <a
                   key={index}
-                  href={match[2]}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-stone-900 underline hover:text-pink-700 font-medium"
+                  href={href}
+                  target={href.startsWith('mailto:') ? undefined : '_blank'}
+                  rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                  className="text-pink-600 underline font-medium hover:text-pink-800 transition-colors"
                 >
-                  {match[1]}
+                  {label}
                 </a>
               );
             }
           }
+
+          if (part.startsWith('http://') || part.startsWith('https://')) {
+            return (
+              <a
+                key={index}
+                href={part}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-pink-600 underline font-medium hover:text-pink-800 break-all transition-colors"
+              >
+                {part}
+              </a>
+            );
+          }
+
           return part;
         })}
       </>
     );
   };
 
+  const renderTable = (table: PolicyTable) => (
+    <div className="overflow-x-auto my-4 rounded-xl border border-stone-200 shadow-2xs">
+      <table className="min-w-full divide-y divide-stone-200 text-left text-xs sm:text-sm">
+        <thead className="bg-stone-50 text-stone-800 font-semibold uppercase tracking-wider text-[11px]">
+          <tr>
+            {table.headers.map((h, i) => (
+              <th key={i} scope="col" className="px-4 py-3 bg-stone-100/70 border-b border-stone-200 font-bold">
+                {h}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-stone-100 bg-white">
+          {table.rows.map((row, rIdx) => (
+            <tr key={rIdx} className="hover:bg-stone-50/60 transition-colors">
+              {row.map((cell, cIdx) => (
+                <td key={cIdx} className="px-4 py-3 text-stone-700 align-top leading-relaxed">
+                  {renderFormattedText(cell)}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+
+  const renderContentItems = (items: string[]) => {
+    const blocks: { type: 'paragraph' | 'bullets'; items: string[] }[] = [];
+
+    items.forEach((item) => {
+      const isBullet = item.startsWith('• ') || item.startsWith('- ');
+      const cleanItem = isBullet ? item.replace(/^[•\-]\s*/, '') : item;
+
+      if (isBullet) {
+        const lastBlock = blocks[blocks.length - 1];
+        if (lastBlock && lastBlock.type === 'bullets') {
+          lastBlock.items.push(cleanItem);
+        } else {
+          blocks.push({ type: 'bullets', items: [cleanItem] });
+        }
+      } else {
+        blocks.push({ type: 'paragraph', items: [cleanItem] });
+      }
+    });
+
+    return blocks.map((block, bIdx) => {
+      if (block.type === 'bullets') {
+        return (
+          <ul key={bIdx} className="space-y-2.5 my-3 list-none pl-0">
+            {block.items.map((bullet, idx) => (
+              <li key={idx} className="flex items-start gap-2.5 text-stone-700 text-sm sm:text-base leading-relaxed">
+                <span className="w-1.5 h-1.5 rounded-full bg-pink-500 mt-2 shrink-0" aria-hidden="true" />
+                <span className="flex-1">{renderFormattedText(bullet)}</span>
+              </li>
+            ))}
+          </ul>
+        );
+      }
+
+      return (
+        <div key={bIdx} className="space-y-3.5 my-3 first:mt-0 last:mb-0">
+          {block.items.map((p, idx) => (
+            <p key={idx} className="text-stone-700 text-sm sm:text-base leading-relaxed">
+              {renderFormattedText(p)}
+            </p>
+          ))}
+        </div>
+      );
+    });
+  };
+
   return (
     <section 
       id={section.id} 
-      className="scroll-mt-16 py-7 border-b border-stone-200/70 last:border-b-0 print-section"
+      className="scroll-mt-16 py-7 border-b border-stone-200/70 last:border-b-0 print-section relative"
     >
+      {/* Anchor aliases for backward compatibility */}
+      {section.id === 'section-15' && <span id="contact-and-deletion" className="absolute -top-16" />}
+
       <h2 className="text-xl sm:text-2xl font-bold text-stone-900 tracking-tight mb-4">
         {section.number}. {section.title}
       </h2>
 
-      {section.actionRequired && (
-        <div className="mb-4 p-3 bg-amber-50/80 border border-amber-200 rounded-lg text-xs text-amber-900 leading-relaxed no-print">
-          <strong className="font-semibold text-amber-950">Developer Action Item:</strong> {section.actionRequired}
+      {section.content && section.content.length > 0 && (
+        <div className="text-stone-700 text-sm sm:text-base leading-relaxed">
+          {renderContentItems(section.content)}
         </div>
       )}
 
-      <div className="space-y-3.5 text-stone-700 text-sm sm:text-base leading-relaxed">
-        {section.content.map((paragraph, idx) => (
-          <p key={idx} className="leading-relaxed">
-            {renderFormattedText(paragraph)}
-          </p>
-        ))}
-      </div>
+      {section.table && renderTable(section.table)}
 
       {section.subsections && section.subsections.length > 0 && (
-        <div className="mt-5 space-y-5 pl-0 sm:pl-2">
+        <div className="mt-5 space-y-6 pl-0 sm:pl-2">
           {section.subsections.map((sub, sIdx) => (
-            <div key={sIdx} className="space-y-2">
-              <h3 className="text-base font-semibold text-stone-900">
+            <div key={sIdx} id={sub.id} className="space-y-2 relative">
+              {sub.id === 'section-2-8' && <span id="section-16" className="absolute -top-16" />}
+              <h3 className="text-base sm:text-lg font-semibold text-stone-900">
                 {sub.title}
               </h3>
-              
-              {sub.actionRequired && (
-                <p className="text-xs text-amber-800 bg-amber-50/60 p-2 rounded border border-amber-200/70 no-print">
-                  <strong>Notice:</strong> {sub.actionRequired}
-                </p>
+
+              {sub.content && sub.content.length > 0 && (
+                <div className="text-stone-700 text-sm sm:text-base leading-relaxed">
+                  {renderContentItems(sub.content)}
+                </div>
               )}
 
-              <div className="space-y-2 text-stone-700 text-sm sm:text-base leading-relaxed">
-                {sub.content.map((subP, pIdx) => (
-                  <p key={pIdx}>
-                    {renderFormattedText(subP)}
-                  </p>
-                ))}
-              </div>
+              {sub.table && renderTable(sub.table)}
             </div>
           ))}
         </div>

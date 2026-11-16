@@ -1,32 +1,31 @@
 /**
  * FluffyDoll Official Privacy Policy Data Structure
- * Contains verified project facts, structured policy sections,
- * and clear unresolved placeholder declarations for developer compliance.
+ * Contains verified production details, structured policy sections,
+ * and compliance disclosures as effective 16 November 2026.
  */
+
+export interface PolicyTable {
+  headers: string[];
+  rows: string[][];
+}
+
+export interface PolicySubsection {
+  id?: string;
+  number?: string;
+  title: string;
+  content: string[];
+  table?: PolicyTable;
+}
 
 export interface PolicySectionItem {
   id: string;
   number: string;
   title: string;
   shortTitle: string;
-  summary: string;
-  content: string[]; // markdown-like or paragraph text
-  subsections?: {
-    title: string;
-    content: string[];
-    actionRequired?: string;
-  }[];
-  actionRequired?: string;
-}
-
-export interface ReviewChecklistItem {
-  id: string;
-  category: 'Legal' | 'Contact' | 'Third-Party' | 'Google Play' | 'Technical';
-  field: string;
-  currentStatus: 'unresolved' | 'verified_in_source' | 'conditional';
-  description: string;
-  placeholderText: string;
-  instructions: string;
+  summary?: string;
+  content: string[];
+  subsections?: PolicySubsection[];
+  table?: PolicyTable;
 }
 
 export const POLICY_METADATA = {
@@ -34,379 +33,283 @@ export const POLICY_METADATA = {
   gameGenre: 'Casual Puzzle Game',
   gameEngine: 'Flutter & Flame Engine',
   platform: 'Android',
-  effectiveDate: 'October 23, 2026',
-  lastUpdated: 'October 23, 2026',
-  policyVersion: '1.0.0-draft',
-  canonicalUrlPlaceholder: 'https://YOUR_PRODUCTION_DOMAIN.com/privacy-policy',
-  developerNamePlaceholder: '[ACTION REQUIRED: Developer Legal Name or Studio Entity]',
-  developerEmailPlaceholder: '[ACTION REQUIRED: privacy@yourdomain.com]',
-  developerAddressPlaceholder: '[ACTION REQUIRED: Developer Physical Mailing Address, City, Country]',
-  targetAudiencePlaceholder: '[ACTION REQUIRED: Declare Google Play Target Age Group e.g., Everyone / 13+ / Families Program]',
-  adProviderPlaceholder: '[ACTION REQUIRED: Specify Ad Networks e.g., Google AdMob, Unity Ads, or Confirm Ad-Free]',
-  analyticsProviderPlaceholder: '[ACTION REQUIRED: Specify Analytics e.g., Firebase Analytics, or Confirm No Remote Analytics]'
+  effectiveDate: '16 November 2026',
+  lastUpdated: '16 November 2026',
+  policyVersion: '1.0.0',
+  developerName: 'Sourabh Singh (Sooubh)',
+  developerLocation: 'Nashik, Maharashtra, India',
+  developerEmail: 'fluffydoll-support@sooubh.in',
+  websiteUrl: 'https://fluffydoll.sooubh.in/',
+  canonicalUrl: 'https://fluffydoll.sooubh.in/privacy-policy',
+  targetAudience: 'General audience aged 13 and older (not directed at children under 13)',
+  adProvider: 'Google AdMob',
+  analyticsProvider: 'Firebase Analytics',
+  crashlyticsProvider: 'Firebase Crashlytics',
+  cloudSaveProvider: 'Google Play Games Services',
 };
-
-export const REVIEW_CHECKLIST: ReviewChecklistItem[] = [
-  {
-    id: 'dev-identity',
-    category: 'Legal',
-    field: 'Developer Legal Identity',
-    currentStatus: 'unresolved',
-    placeholderText: '[ACTION REQUIRED: Developer Legal Name or Studio Entity]',
-    description: 'The legal name of the individual developer or registered entity publishing FluffyDoll on Google Play.',
-    instructions: 'Replace with the exact entity name shown in your Google Play Console developer account profile.'
-  },
-  {
-    id: 'privacy-email',
-    category: 'Contact',
-    field: 'Dedicated Privacy Contact Email',
-    currentStatus: 'unresolved',
-    placeholderText: '[ACTION REQUIRED: privacy@yourdomain.com]',
-    description: 'An active, monitored email address where players can submit privacy inquiries and data deletion requests.',
-    instructions: 'Must be reachable by users and Google Play review teams. Do not use personal or unmonitored addresses.'
-  },
-  {
-    id: 'dev-address',
-    category: 'Contact',
-    field: 'Business / Mailing Address',
-    currentStatus: 'unresolved',
-    placeholderText: '[ACTION REQUIRED: Developer Physical Mailing Address]',
-    description: 'Physical address required for commercial entity compliance under GDPR/CCPA and Google Play merchant guidelines.',
-    instructions: 'Provide registered business address or commercial contact PO box.'
-  },
-  {
-    id: 'ad-sdk',
-    category: 'Third-Party',
-    field: 'Advertising SDK Integration Status',
-    currentStatus: 'unresolved',
-    placeholderText: '[ACTION REQUIRED: Ad Network Declaration]',
-    description: 'Whether FluffyDoll displays banner, interstitial, or rewarded video ads, and which advertising SDKs are compiled.',
-    instructions: 'If no ads are served, explicitly state "FluffyDoll is completely ad-free". If AdMob, Unity Ads, or ironSource are used, specify their SDK versions and privacy policies.'
-  },
-  {
-    id: 'analytics-sdk',
-    category: 'Third-Party',
-    field: 'Analytics & Telemetry Status',
-    currentStatus: 'unresolved',
-    placeholderText: '[ACTION REQUIRED: Analytics Declaration]',
-    description: 'Whether remote analytics (e.g. Firebase Analytics, GameAnalytics, Crashlytics) collect event telemetry.',
-    instructions: 'Confirm whether any remote telemetry SDK is included. If purely local offline, state that no remote analytics are deployed.'
-  },
-  {
-    id: 'target-audience',
-    category: 'Google Play',
-    field: 'Target Audience & Families Policy',
-    currentStatus: 'unresolved',
-    placeholderText: '[ACTION REQUIRED: Age Group & Families Program Status]',
-    description: 'Google Play Target Audience questionnaire classification (e.g., Children under 13, Mixed Audience, or 13+).',
-    instructions: 'Casual doll puzzle art may attract children. If participating in Google Play Families Policy, strict ad SDK filtering (COPPA compliant) is required.'
-  },
-  {
-    id: 'iap-billing',
-    category: 'Google Play',
-    field: 'In-App Purchases (IAP) Billing',
-    currentStatus: 'unresolved',
-    placeholderText: '[ACTION REQUIRED: In-App Purchases Status]',
-    description: 'Whether FluffyDoll contains optional microtransactions (e.g. coin packs, hints, ad-removal).',
-    instructions: 'Confirm if Google Play Billing Library is integrated or if the game is 100% free with no in-app purchases.'
-  },
-  {
-    id: 'production-domain',
-    category: 'Technical',
-    field: 'Production Canonical Domain',
-    currentStatus: 'unresolved',
-    placeholderText: 'https://YOUR_PRODUCTION_DOMAIN.com/privacy-policy',
-    description: 'The live public URL hosted on HTTPS that will be entered into Google Play Console App Content > Privacy Policy.',
-    instructions: 'Deploy this site to your custom domain or Vercel URL and paste the exact HTTPS URL into the Google Play Console.'
-  }
-];
 
 export const POLICY_SECTIONS: PolicySectionItem[] = [
   {
-    id: 'section-1-introduction',
+    id: 'section-1',
     number: '1',
-    title: 'Introduction and Scope',
-    shortTitle: '1. Introduction & Scope',
-    summary: 'Overview of FluffyDoll, developer scope, and commitment to user transparency.',
-    actionRequired: 'Replace [ACTION REQUIRED: Developer Legal Name or Studio Entity] with verified legal name.',
+    title: 'Summary',
+    shortTitle: '1. Summary',
+    summary: 'High-level overview of FluffyDoll data practices and player privacy controls.',
     content: [
-      `This Privacy Policy ("Policy") describes how ${POLICY_METADATA.developerNamePlaceholder} ("we", "us", or "our") collects, uses, protects, and discloses information in connection with the mobile game **FluffyDoll** (the "Game") and our associated web services, customer support channels, and websites.`,
-      `FluffyDoll is a casual puzzle mobile application engineered with Flutter and the Flame 2D game engine, distributed via the Google Play Store for Android devices. We believe that gaming should be delightful, accessible, and transparent. We are committed to safeguarding the privacy of our players and maintaining transparent data practices.`,
-      `Please read this Policy carefully. By downloading, accessing, or playing FluffyDoll, you acknowledge the terms described herein. If you do not agree with the practices described in this Policy, please do not download, install, or use FluffyDoll.`
+      '• FluffyDoll does not ask you to create an account with us and does not collect your name, email, phone number, contacts, photos, precise location or payment information.',
+      '• If you choose to sign in to **Google Play Games**, the app uses your Play Games profile to show leaderboards and to back up your game progress to your own Google account.',
+      '• The game uses **Google AdMob** (ads), **Firebase Analytics** (usage statistics) and **Firebase Crashlytics** (crash reports). These Google services collect some device and usage data, described in section 2.',
+      '• We do not sell your personal information.',
+      '• You can control ads, sign-in and your data as explained in sections 8 and 9.'
     ]
   },
   {
-    id: 'section-2-information-we-collect',
+    id: 'section-2',
     number: '2',
-    title: 'Information We Collect',
+    title: 'Information we collect',
     shortTitle: '2. Information We Collect',
-    summary: 'Clear itemization of direct user input, technical device metrics, gameplay data, and third-party data.',
-    content: [
-      `To provide an accurate legal overview, we categorize the types of information that may be collected or processed in connection with FluffyDoll into distinct categories:`
-    ],
+    summary: 'Detailed categories of data collected via Play Games, local storage, AdMob, and Firebase.',
+    content: [],
     subsections: [
       {
-        title: 'A. Information You Provide Directly',
+        id: 'section-2-1',
+        title: '2.1 Google Play Games Services data (only if you sign in)',
         content: [
-          `• **Customer Support & Communications:** If you voluntarily contact us via email for troubleshooting, feature requests, or bug reports, we receive your email address, your name or handle (if provided by your email client), and the contents of your message.`,
-          `• **No Account Registration:** FluffyDoll does not currently require or offer user account registration, username/password logins, or social profile linkage. Players can experience the puzzle gameplay without supplying personal registration credentials.`
+          'FluffyDoll uses Google Play Games Services for sign-in, leaderboards and cloud save. If you sign in, the app receives from Google:',
+          '• Your Play Games player ID (an identifier for your Play Games profile)',
+          '• Your Play Games display name and profile image',
+          '• Your scores submitted to the FluffyDoll leaderboard',
+          '• Your saved game data (see 2.2)',
+          'We do **not** receive your email address, phone number, contacts, files, location or other personal information from your Google account through Play Games Services.'
         ]
       },
       {
-        title: 'B. Device and Technical Information',
+        id: 'section-2-2',
+        title: '2.2 Cloud save (saved game) data',
         content: [
-          `When FluffyDoll executes on an Android device, standard operating system parameters may be accessed locally by the Flutter and Flame engine runtime to render graphics at appropriate resolutions and frame rates:`,
-          `• **Device Model & Operating System Version:** (e.g., Android OS 12, 13, 14, screen DPI, display resolution).`,
-          `• **System Performance & Memory:** Graphic rendering limits, framerate target (60fps/120fps), and available system RAM required to allocate 2D sprite textures smoothly.`,
-          `• **Language & Regional Settings:** Device locale (e.g., en_US) used solely to present localized puzzle instructions and text.`
+          'If you sign in, FluffyDoll saves your game progress (for example, high score, in-game currency, unlocked items and settings) using Google Play Games Services saved games. This data is stored by Google in a hidden app-data area of your Google account (the `drive.appdata` scope). It is used only to restore your progress on a new or reinstalled device. It is not visible to us outside the app and we do not copy it to our own servers.'
         ]
       },
       {
-        title: 'C. Gameplay Activity, Progress, and Preferences',
+        id: 'section-2-3',
+        title: '2.3 Data stored on your device',
         content: [
-          `• **Puzzle Progress:** Completed level numbers, doll unlocks, puzzle stage stars, high scores, and achievement states.`,
-          `• **In-Game Settings:** Sound effects volume, background music toggle, haptic feedback vibration settings, and visual accessibility toggles.`,
-          `• **Local Storage Architecture:** This gameplay information is processed and retained **locally on your device** (see Section 4).`
+          'The game stores your progress, settings and preferences locally on your device so it works offline. This data stays on your device unless you use cloud save.'
         ]
       },
       {
-        title: 'D. Diagnostics, Crash Logs, and Performance Data',
+        id: 'section-2-4',
+        title: '2.4 Advertising data (Google AdMob)',
         content: [
-          `• **Crash Reports:** In the event of an unhandled exception or game crash, the Android operating system or integrated crash-monitoring tool may generate a stack trace, device state, and memory status to assist in diagnosing engine crashes.`,
-          `• **Developer Verification:** ${POLICY_METADATA.analyticsProviderPlaceholder}`
-        ],
-        actionRequired: 'Verify whether Firebase Crashlytics or Google Play Vitals alone is used for crash diagnostics.'
-      },
-      {
-        title: 'E. Advertising-Related Identifiers (Subject to Implementation)',
-        content: [
-          `• **Google Advertising ID (GAID / AD_ID):** If advertising SDKs are enabled in the production build, third-party ad networks may process your device's resettable Advertising ID to deliver, measure, and limit the frequency of ads.`,
-          `• **Developer Verification:** ${POLICY_METADATA.adProviderPlaceholder}`
-        ],
-        actionRequired: 'Developer must verify if FluffyDoll displays ads or is completely ad-free.'
-      },
-      {
-        title: 'F. Purchases and Financial Information',
-        content: [
-          `• **Google Play In-App Billing:** If in-app purchases are enabled, transactions are processed exclusively by Google Play (Google LLC). We never receive, collect, or store your credit card numbers, bank account information, or billing address. Google provides the developer only with non-sensitive purchase tokens and receipt verification data to unlock digital game content.`,
-          `• **Developer Verification:** ${POLICY_METADATA.targetAudiencePlaceholder}`
+          'FluffyDoll shows ads using Google AdMob. AdMob may collect and use your advertising ID, IP address (and approximate location derived from it), device model, operating system and version, app version, and information about how you interact with ads, in order to serve, measure and personalize ads and to prevent fraud and abuse. Where required by law (for example in the European Economic Area, the United Kingdom and Switzerland), we ask for your consent before showing personalized ads.',
+          'How Google uses data from apps that use its services: https://policies.google.com/technologies/partner-sites'
         ]
+      },
+      {
+        id: 'section-2-5',
+        title: '2.5 Analytics data (Firebase Analytics)',
+        content: [
+          'We use Firebase Analytics to understand how the game is used so we can improve it. It may collect an app-instance identifier, device information (model, operating system, language, screen size), approximate region (from IP address), and events such as app opens, sessions, levels played and screens viewed.'
+        ]
+      },
+      {
+        id: 'section-2-6',
+        title: '2.6 Crash and diagnostic data (Firebase Crashlytics)',
+        content: [
+          'We use Firebase Crashlytics to find and fix crashes. It may collect crash logs, the state of the device at the time of the crash (model, operating system version, memory and storage status), the app version and an installation identifier.',
+          'More about Firebase and privacy: https://firebase.google.com/support/privacy'
+        ]
+      },
+      {
+        id: 'section-2-7',
+        title: '2.7 Information we do not collect',
+        content: [
+          'We do not ask for or collect your name, email address, postal address, phone number, precise location, contacts, photos, microphone or camera data, or payment information. We do not run our own user accounts or servers for player data. We do not knowingly collect sensitive personal information.'
+        ]
+      },
+      {
+        id: 'section-2-8',
+        title: '2.8 Summary table',
+        content: [],
+        table: {
+          headers: ['Category', 'Examples', 'Source', 'Purpose'],
+          rows: [
+            ['Play Games profile', 'Player ID, display name, profile image, leaderboard score', 'Google Play Games Services', 'Sign-in, leaderboards'],
+            ['Saved game data', 'Progress, currency, unlocks, settings', 'You, stored by Google', 'Restore progress'],
+            ['Identifiers', 'Advertising ID, app-instance ID, installation ID', 'Your device, via Google SDKs', 'Ads, analytics, crash reporting'],
+            ['Device and network data', 'Model, OS version, language, IP address', 'Your device', 'Ads, analytics, diagnostics, security'],
+            ['Usage data', 'Sessions, levels played, ad interactions', 'The app', 'Analytics, ad measurement, improving the game'],
+            ['Crash data', 'Crash logs, device state', 'The app', 'Fixing bugs']
+          ]
+        }
       }
     ]
   },
   {
-    id: 'section-3-how-we-use-information',
+    id: 'section-3',
     number: '3',
-    title: 'How We Use Information',
-    shortTitle: '3. How We Use Information',
-    summary: 'Legitimate business purposes for processing data including gameplay operation, performance optimization, and player support.',
+    title: 'Why we use information and our legal bases',
+    shortTitle: '3. Legal Bases & Purposes',
+    summary: 'Purposes of data processing and legal grounds under GDPR and applicable laws.',
     content: [
-      `We process collected or locally processed information strictly for legitimate, defined purposes:`,
-      `• **Game Operation & Continuity:** To enable smooth puzzle progression, render Flame engine animations, restore saved stages, and retain your doll wardrobe and puzzle unlocks.`,
-      `• **Performance Troubleshooting & Bug Resolution:** To identify frame drops, asset loading bottlenecks, memory leaks, and operating system incompatibilities across different Android device configurations.`,
-      `• **Player Support & Inquiry Response:** To investigate and resolve customer support tickets submitted directly by players.`,
-      `• **Security & Integrity:** To prevent unauthorized tampering, cheating, or reverse-engineering of game binaries.`,
-      `• **Legal Compliance:** To comply with applicable legal obligations, app store guidelines, and lawful law enforcement requests.`
+      'We use the information above to:',
+      '• Sign you in to Google Play Games and provide leaderboards and cloud save (to provide the service you request)',
+      '• Show and measure ads, which supports keeping the game free (with your consent where required, otherwise our legitimate interest in funding the game)',
+      '• Understand how the game is used and improve it (your consent where required, otherwise our legitimate interest in improving the game)',
+      '• Find and fix crashes and technical problems, and keep the game secure (our legitimate interest)',
+      '• Comply with legal obligations and respond to lawful requests',
+      'If you are in the EEA, UK or Switzerland, the legal bases we rely on are: performance of the service you ask for, your consent (which you can withdraw at any time), our legitimate interests, and compliance with legal obligations. We do not use your information for automated decisions that have legal or similarly significant effects on you.',
+      'We do not sell your personal information. Data received from Google Play Games Services (see section 4) is never used for advertising.'
     ]
   },
   {
-    id: 'section-4-local-storage-and-game-progress',
+    id: 'section-4',
     number: '4',
-    title: 'Local Storage and Game Progress',
-    shortTitle: '4. Local Storage & Progress',
-    summary: 'Explains how SharedPreferences/local files store puzzle progress and the consequences of clearing cache or uninstalling.',
+    title: 'Google user data and Limited Use',
+    shortTitle: '4. Google User Data & Limited Use',
+    summary: 'Adherence to Google API Services User Data Policy and Limited Use standards.',
     content: [
-      `FluffyDoll is designed with a **privacy-first, offline-capable architecture**. The casual puzzle mechanics run locally on your device without mandating persistent cloud synchronization.`,
-      `• **Local Storage Technologies:** Game settings, unlocked dolls, puzzle level progress, and audio toggles are written directly to your device's private application sandbox using standard Android local storage mechanisms (such as Flutter SharedPreferences, SQLite, or local application document files).`,
-      `• **Device-Specific Retention:** Because progress is stored on the local storage partition of your device, your puzzle progress is tied to that specific hardware.`,
-      `• **Impact of Clearing App Storage or Uninstalling:** If you manually choose to "Clear Data" or "Clear Storage" in your Android system settings, or if you uninstall FluffyDoll, your locally stored puzzle progress, high scores, and customizations will be permanently deleted from your device. Unless an optional Google Play Games cloud backup feature is explicitly activated by the player, deleted local data cannot be recovered by the developer.`
+      "FluffyDoll's use and transfer of information received from Google APIs adheres to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements. Data received through Google Play Games Services and the `games`, `games_lite` and `drive.appdata` scopes is used only to provide the sign-in, leaderboard and cloud save features described in this policy. It is not transferred to others except as needed to provide those features, to comply with applicable law, or as part of a merger or sale with notice to you. It is not used for advertising, is not sold, and is not used to build user profiles for any other purpose. No humans read this data except where needed for security, to comply with law, or with your consent."
     ]
   },
   {
-    id: 'section-5-advertising-and-third-party-services',
+    id: 'section-5',
     number: '5',
-    title: 'Advertising and Third-Party Services',
-    shortTitle: '5. Advertising & 3rd-Party',
-    summary: 'Inventory of third-party SDKs, partners, and links to their official privacy policies.',
-    actionRequired: 'Developer must audit pubspec.yaml and Android build.gradle to verify exact integrated third-party SDKs.',
+    title: 'How we share information',
+    shortTitle: '5. How We Share Information',
+    summary: 'Circumstances under which information is shared with Google, ad partners, or legally required parties.',
     content: [
-      `Modern mobile games frequently integrate third-party software development kits (SDKs) to facilitate distribution, performance monitoring, or monetization. Below is the verified status and requirements for FluffyDoll:`,
-      `**1. Core Framework & Engine:**`,
-      `• **Flutter & Flame Engine:** Developed by Google and the open-source community. These frameworks run natively on the device and do not transmit gameplay data to external servers on their own.`,
-      `**2. Platform Services:**`,
-      `• **Google Play Services (Google LLC):** Facilitates distribution, licensing checks, automatic updates, and system-level performance telemetry through the Android operating system. [Google Privacy Policy](https://policies.google.com/privacy).`,
-      `**3. Monetization & Analytics Status (Pending Final Developer Publication Review):**`,
-      `• ${POLICY_METADATA.adProviderPlaceholder}`,
-      `• ${POLICY_METADATA.analyticsProviderPlaceholder}`,
-      `*Notice:* If third-party advertising or analytics SDKs are compiled into the production binary before release, each provider processes data according to their respective privacy policies. This section will be updated with the direct links to all active third-party SDK privacy notices.`
+      'We do not sell, rent or trade your personal information. We share information only:',
+      '• **With Google as a service provider.** Sign-in, leaderboards and cloud save (Google Play Games Services), advertising (AdMob), analytics (Firebase Analytics) and crash reporting (Firebase Crashlytics) are provided by Google. Google\'s handling of data is covered by the [Google Privacy Policy](https://policies.google.com/privacy).',
+      '• **With advertising partners** that participate in AdMob, who may receive device identifiers and ad interaction data as described in section 2.4.',
+      '• **With other players, in a limited way.** Your Play Games display name and leaderboard score may be visible on the FluffyDoll leaderboard according to your Play Games profile and privacy settings.',
+      '• **For legal reasons.** If required by law, a court order or a valid legal request, or to protect the rights, property or safety of users, us or others.',
+      '• **In a business change.** If the app is sold or transferred, information may transfer to the new owner, who must honor this policy.'
     ]
   },
   {
-    id: 'section-6-data-sharing-and-disclosure',
+    id: 'section-6',
     number: '6',
-    title: 'Data Sharing and Disclosure',
-    shortTitle: '6. Data Sharing & Disclosure',
-    summary: 'Circumstances where data may be shared with service providers, legal authorities, or business successors.',
+    title: 'International data transfers',
+    shortTitle: '6. International Transfers',
+    summary: 'Safeguards for processing data on servers globally and in India.',
     content: [
-      `We do not sell, rent, or trade your personal information to data brokers or unrelated third parties. We only share information in the following limited, legally authorized circumstances:`,
-      `• **Authorized Service Providers:** Third-party cloud infrastructure, analytics, or developer tools that assist in hosting this website or diagnosing technical stability, bound by strict confidentiality and data-protection agreements.`,
-      `• **Compliance with Law & Protection of Rights:** We may disclose information if required to do so by law, subpoena, court order, or governmental regulation, or if we determine in good faith that disclosure is necessary to protect the safety, rights, or property of players, the developer, or the general public.`,
-      `• **Business Transfers:** If FluffyDoll or the developer entity undergoes a merger, acquisition, reorganization, or sale of game assets, player information associated with game continuity may be transferred to the acquiring entity subject to this Policy.`
+      'Google and its partners process data on servers in many countries, including countries other than your own (such as the United States and India). Where your information is transferred outside your country, Google relies on safeguards such as standard contractual clauses and its own security programs. We are based in India, and any information we hold may be handled there.'
     ]
   },
   {
-    id: 'section-7-data-retention-and-deletion',
+    id: 'section-7',
     number: '7',
-    title: 'Data Retention and Deletion',
-    shortTitle: '7. Retention & Deletion',
-    summary: 'Data retention schedules and step-by-step instructions for players requesting data deletion.',
-    actionRequired: 'Provide dedicated email address to process player deletion requests.',
-    content: [
-      `We adhere to the principle of data minimization and do not retain personal information longer than necessary to fulfill the purposes outlined in this Policy.`,
-      `• **Locally Stored Data:** Retained on your device until you clear application storage or uninstall the Game. You hold complete, autonomous control over this data.`,
-      `• **Customer Support Communications:** Emails and troubleshooting correspondence are retained for up to twelve (12) months to maintain support continuity, after which they are securely archived or purged.`,
-      `• **Diagnostic Logs:** Where aggregated crash logs are collected by platform vitals, they are retained in accordance with Google Play developer console retention windows (typically 90 to 180 days).`
-    ],
-    subsections: [
-      {
-        title: 'Step-by-Step Data Deletion Request Procedure',
-        content: [
-          `If you wish to request the deletion of any data that may have been transmitted to us (such as customer support messages or associated correspondence):`,
-          `1. Send an email to ${POLICY_METADATA.developerEmailPlaceholder} with the subject line: **"FluffyDoll Data Deletion Request"**.`,
-          `2. Include your device brand and model, any relevant support ticket reference numbers, and the specific information you wish to have removed.`,
-          `3. We will acknowledge receipt of your request within five (5) business days and complete the deletion within thirty (30) calendar days, free of charge, in accordance with applicable privacy laws.`
-        ]
-      }
-    ]
+    title: 'Data retention',
+    shortTitle: '7. Data Retention',
+    summary: 'Retention periods for Play Games, device storage, analytics, crash logs, and emails.',
+    content: [],
+    table: {
+      headers: ['Data', 'How long it is kept'],
+      rows: [
+        ['Play Games profile, leaderboard scores and saved game', 'Until you delete your Play Games data or profile, or Google removes it under its own policies'],
+        ['Local game data on your device', 'Until you uninstall the app or clear its data'],
+        ['Firebase Analytics data', 'Held by Google for a limited period under the retention settings we configure (not more than 14 months for event-level data)'],
+        ['Firebase Crashlytics data', 'Typically up to 90 days, as set by Firebase'],
+        ['Ad-related data', 'Held by Google and its partners under their own policies'],
+        ['Emails you send us', 'Only as long as needed to answer you and meet legal obligations']
+      ]
+    }
   },
   {
-    id: 'section-8-childrens-privacy',
+    id: 'section-8',
     number: '8',
-    title: "Children's Privacy & Google Play Families Policy",
-    shortTitle: "8. Children's Privacy",
-    summary: "Audience classifications, compliance with COPPA, GDPR-K, and Google Play Families guidelines.",
-    actionRequired: 'Complete the Google Play Target Audience and Content questionnaire to verify exact classification.',
+    title: 'Your choices and controls',
+    shortTitle: '8. Choices & Controls',
+    summary: 'Options to control sign-in, cloud save, ad personalization, and local storage.',
     content: [
-      `Protecting the privacy of children is of paramount importance to us. Because FluffyDoll features a colorful, cute plush-doll aesthetic, we take child safety standards with the utmost seriousness.`,
-      `• **Audience Classification:** ${POLICY_METADATA.targetAudiencePlaceholder}`,
-      `• **COPPA & International Standards:** We comply with the United States Children's Online Privacy Protection Act (COPPA), the General Data Protection Regulation child-protection provisions (GDPR-K), and Google Play's Families Policy requirements.`,
-      `• **No Personal Data Collection from Children:** We do not knowingly collect, solicit, or maintain personally identifiable information from children under the age of 13 (or under 16 in the European Economic Area).`,
-      `• **Ad Filtering for Families:** If FluffyDoll is designated as child-directed or mixed-audience in the Google Play Console, any advertising displayed must strictly originate from Google Play Certified Ad Networks, with behavioral tracking and interest-based profiling disabled.`,
-      `• **Parental Inquiries:** If a parent or guardian discovers that their child has provided personal information to us without parental consent, please contact us at ${POLICY_METADATA.developerEmailPlaceholder}. We will promptly delete such information from our records.`
+      '• **Signing in is optional.** You can play without signing in to Google Play Games. Leaderboards and cloud save will then be unavailable.',
+      '• **Sign out or delete Play Games data.** Open the Google Play Games app, go to Settings, and sign out or delete your Play Games profile or game data.',
+      '• **Revoke access.** Remove FluffyDoll in your Google Account under Security, Third-party apps and services.',
+      '• **Ads.** Reset your advertising ID or opt out of ad personalization in your Android settings (Settings, Google, Ads). Where available, change your ad consent choices from within the app. Opting out does not remove ads, but makes them less relevant.',
+      '• **Uninstall.** Uninstalling the app stops all collection by the app.'
     ]
   },
   {
-    id: 'section-9-data-security',
+    id: 'section-9',
     number: '9',
-    title: 'Data Security Measures',
-    shortTitle: '9. Data Security',
-    summary: 'Technical and organizational safeguards implemented to protect user information.',
+    title: 'Your privacy rights',
+    shortTitle: '9. Your Privacy Rights',
+    summary: 'Statutory privacy rights across GDPR, CCPA/CPRA, and India DPDP Act 2023.',
     content: [
-      `We implement reasonable and appropriate technical, administrative, and organizational safeguards designed to protect player information against unauthorized access, loss, misuse, or alteration:`,
-      `• **Secure Transport:** Any web-based communications or customer support portals utilize industry-standard Transport Layer Security (TLS/HTTPS) encryption in transit.`,
-      `• **Operating System Sandboxing:** FluffyDoll operates within the Android application sandbox, preventing other unapproved applications on your device from inspecting local puzzle state data.`,
-      `• **No Absolute Guarantee:** While we take rigorous measures to protect data integrity, no electronic storage system or transmission over the internet can be guaranteed to be 100% secure. Players are advised to safeguard their personal devices with screen locks and updated operating system patches.`
+      'Depending on where you live, you may have some or all of the following rights. We will respond to verified requests within the time required by law (generally 30 to 45 days).',
+      '• **All users.** You can ask what information we hold about you, ask us to correct or delete it, or ask us to stop using it, by emailing [fluffydoll-support@sooubh.in](mailto:fluffydoll-support@sooubh.in). Because we do not collect your name or email, we may be unable to identify data that belongs to you unless you give us an identifier (for example your advertising ID or Play Games player ID), and most data is controlled directly by Google, so the in-app and Google account controls in section 8 are often the fastest way.',
+      '• **EEA, UK and Switzerland (GDPR).** You have the right to access, correct, delete, restrict or object to processing of your personal data, to data portability, and to withdraw consent at any time without affecting earlier processing. You also have the right to complain to your local data protection authority.',
+      '• **California (CCPA/CPRA) and other US states.** You have the right to know the categories of personal information we collect, use and disclose (see section 2.8), to request access or deletion, to correct inaccurate information, to opt out of the sale or sharing of personal information, and not to be discriminated against for using these rights. We do not sell personal information. Personalized advertising through AdMob may be considered "sharing" for cross-context behavioral advertising under California law. You can opt out by turning off ad personalization in your Android settings or in the app\'s ad consent options. We do not knowingly sell or share the personal information of anyone under 16. You may use an authorized agent to make a request on your behalf.',
+      '• **India (Digital Personal Data Protection Act, 2023).** You have the right to access information about your personal data, to request correction and erasure, to withdraw consent, and to nominate another person to exercise your rights if you die or become unable to. To exercise these rights or raise a grievance, write to [fluffydoll-support@sooubh.in](mailto:fluffydoll-support@sooubh.in) with the subject "Privacy request". We will acknowledge your request and aim to resolve it within the time required by law. Grievance contact: Sourabh Singh, fluffydoll-support@sooubh.in.'
     ]
   },
   {
-    id: 'section-10-international-data-processing',
+    id: 'section-10',
     number: '10',
-    title: 'International Data Processing',
-    shortTitle: '10. International Transfers',
-    summary: 'Cross-border data processing provisions where remote services or global CDNs are utilized.',
+    title: 'Children and minors',
+    shortTitle: '10. Children & Minors',
+    summary: 'Age restrictions, protection of minors, and non-collection from children under 13.',
     content: [
-      `FluffyDoll is distributed worldwide via the Google Play Store. If you utilize online services, customer support, or if third-party SDKs process telemetry, information may be transferred to, stored, and processed in jurisdictions other than your country of residence, including the United States, where Google and cloud infrastructure providers operate data centers.`,
-      `These jurisdictions may maintain data protection laws that differ from those in your country. Where cross-border data transfers occur, we and our service providers rely on lawful mechanisms such as the European Commission Standard Contractual Clauses (SCCs) to ensure an adequate level of data protection.`
+      'FluffyDoll is intended for users aged 13 and older and is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided information through the game, contact us at [fluffydoll-support@sooubh.in](mailto:fluffydoll-support@sooubh.in) and we will take steps to delete it.',
+      'If you are under 18 (or under the age of majority where you live), please use the game with the knowledge and permission of a parent or guardian. Parents and guardians can contact us at the email above to ask about, correct or delete a minor\'s information.'
     ]
   },
   {
-    id: 'section-11-user-privacy-rights',
+    id: 'section-11',
     number: '11',
-    title: 'User Privacy Rights (GDPR, CCPA/CPRA, and Regional Laws)',
-    shortTitle: '11. Your Privacy Rights',
-    summary: 'Detailed explanation of player rights including access, rectification, erasure, and opt-out.',
+    title: 'Security',
+    shortTitle: '11. Security',
+    summary: 'Encryption in transit, Google infrastructure security, and incident notification.',
     content: [
-      `Depending on your jurisdiction and geographical residence, you may have specific legal rights regarding your personal information under regulations such as the General Data Protection Regulation (GDPR), the UK Data Protection Act, the California Consumer Privacy Act as amended by the CPRA (CCPA/CPRA), or the Brazilian LGPD.`,
-      `These rights may include:`,
-      `• **Right to Access & Portability:** The right to request confirmation of whether we process personal information about you and receive a copy of that data.`,
-      `• **Right to Rectification:** The right to request correction of inaccurate or incomplete personal information.`,
-      `• **Right to Erasure ("Right to be Forgotten"):** The right to request deletion of your personal data held by us.`,
-      `• **Right to Restrict or Object to Processing:** The right to restrict or object to our processing of your personal information under certain legal grounds.`,
-      `• **Right to Opt-Out of Personalized Advertising:** On Android devices, you can reset or disable your Advertising ID at any time via **Android Settings → Google → Ads → Delete Advertising ID / Opt out of Ads Personalization**.`,
-      `• **Non-Discrimination:** We will never discriminate against you, deny gameplay access, or alter your puzzle experience for exercising your privacy rights.`,
-      `To exercise any of these rights, please contact us at ${POLICY_METADATA.developerEmailPlaceholder}. We will respond to verified requests within the statutory timeframe mandated by your local law.`
+      "We rely on Google's security systems to protect sign-in, saved data, ads and analytics, and data sent between the app and Google's services is encrypted in transit. We do not run our own servers for player data. No method of transmission or storage is completely secure, so we cannot guarantee absolute security. If we become aware of a data breach affecting you, we will notify you and the relevant authorities as required by law."
     ]
   },
   {
-    id: 'section-12-android-permissions',
+    id: 'section-12',
     number: '12',
-    title: 'Android Permissions Analysis',
-    shortTitle: '12. Android Permissions',
-    summary: 'Complete technical review of runtime and install-time permissions requested by the game.',
-    actionRequired: 'Verify AndroidManifest.xml in the Flutter project to confirm exact permissions declared.',
+    title: 'Third-party services and links',
+    shortTitle: '12. Third-Party Services',
+    summary: 'Direct links to official third-party privacy policies for Google services.',
     content: [
-      `FluffyDoll is built using Flutter and Flame. By default, casual 2D puzzle games require minimal operating system privileges. Below is the permission inventory and operational rationale:`,
-      `• **android.permission.INTERNET:** (If present) Allows the application to establish network connections. Used if remote asset downloading, crash logging, or online ads are active. Not required for offline puzzle play.`,
-      `• **android.permission.ACCESS_NETWORK_STATE:** (If present) Allows the app to determine if an active Wi-Fi or mobile data connection is available before attempting network operations.`,
-      `• **android.permission.VIBRATE:** (Optional) Allows FluffyDoll to trigger subtle haptic vibration effects when puzzle dolls snap into place or when completing a combo. Can be toggled off inside game settings.`,
-      `• **com.google.android.gms.permission.AD_ID:** (Conditional) Required on Android 13+ devices if third-party advertising SDKs are integrated to access the Google Advertising ID. If FluffyDoll is released as an ad-free game or participating in Google Play Families for young children, this permission must not be utilized.`,
-      `• **No Sensitive Permissions:** FluffyDoll does NOT request access to your Camera, Microphone, GPS Precise Location, Contacts, SMS, Phone State, or External Storage Files.`
+      'The app and our website may contain links to third-party sites or services, including Google. We are not responsible for the privacy practices of others. Please read their policies:',
+      '• Google Privacy Policy: https://policies.google.com/privacy',
+      '• Google Play Games Services: https://policies.google.com/privacy',
+      '• Firebase: https://firebase.google.com/support/privacy',
+      '• Google AdMob and partner data use: https://policies.google.com/technologies/partner-sites'
     ]
   },
   {
-    id: 'section-13-offline-gameplay',
+    id: 'section-13',
     number: '13',
-    title: 'Offline Gameplay & Reconnection Behavior',
-    shortTitle: '13. Offline Gameplay',
-    summary: 'Details regarding playing without internet connectivity and sync behavior upon reconnecting.',
+    title: 'Do Not Track',
+    shortTitle: '13. Do Not Track',
+    summary: 'Statement regarding web browser Do Not Track signals in mobile games.',
     content: [
-      `FluffyDoll is fully engineered to support **offline casual puzzle gameplay**.`,
-      `• **Offline Play:** You do not need an active internet connection or cellular mobile data to launch FluffyDoll, solve puzzles, unlock doll cosmetics, or adjust your settings. All core game loops and assets execute locally.`,
-      `• **Reconnection Behavior:** When your device transitions from offline to online, FluffyDoll does not secretly upload your local puzzle saves to unauthorized third parties. If platform crash telemetry or ad networks are enabled, pending crash logs or ad requests may refresh using standard operating system network stacks.`
+      'The app does not respond to browser "Do Not Track" signals because it is a mobile game and not a website. Use the controls in section 8 to manage tracking and ads on your device.'
     ]
   },
   {
-    id: 'section-14-changes-to-policy',
+    id: 'section-14',
     number: '14',
-    title: 'Changes to This Privacy Policy',
+    title: 'Changes to this policy',
     shortTitle: '14. Policy Updates',
-    summary: 'Process for updating this policy, changing the effective date, and notifying players.',
+    summary: 'Procedures for updating the policy and notifying players of material revisions.',
     content: [
-      `We may update this Privacy Policy from time to time to reflect changes in our gameplay features, third-party integrations, legal obligations, or Google Play policy updates.`,
-      `• **Publication of Changes:** When updates are made, we will revise the **"Last Updated"** date at the top of this document and publish the revised version at our canonical privacy URL.`,
-      `• **Material Changes:** If we implement material changes that significantly affect how personal information is handled, we will provide prominent notice through an in-game alert or release notes in the Google Play Store prior to the changes taking effect.`,
-      `• **Review Recommendation:** We encourage players to review this Privacy Policy periodically to stay informed about our data practices.`
+      'We may update this policy from time to time, for example when we add features or when the law changes. The updated version will be posted on this page with a new "Last updated" date. If a change is significant, we will give extra notice, for example within the app. Continuing to use the game after a change means you accept the updated policy.'
     ]
   },
   {
-    id: 'section-15-contact-us',
+    id: 'section-15',
     number: '15',
-    title: 'Contact Information and Developer Identification',
+    title: 'Contact us',
     shortTitle: '15. Contact Us',
-    summary: 'Verified contact points for privacy inquiries, legal requests, and publisher identification.',
-    actionRequired: 'Replace developer identity and email placeholders with verified developer credentials.',
+    summary: 'Official developer and grievance email, location, and website details.',
     content: [
-      `If you have any questions, comments, concerns, or requests regarding this Privacy Policy or the data practices of FluffyDoll, please contact our privacy compliance team:`,
-      `• **Developer / Publisher Entity:** ${POLICY_METADATA.developerNamePlaceholder}`,
-      `• **Privacy & Support Email:** ${POLICY_METADATA.developerEmailPlaceholder}`,
-      `• **Physical Business Address:** ${POLICY_METADATA.developerAddressPlaceholder}`,
-      `• **Official Game Website:** [ACTION REQUIRED: Link to Official Web Landing Page or Play Store Listing]`,
-      `We endeavor to respond to all legitimate inquiries and data requests within thirty (30) calendar days.`
-    ]
-  },
-  {
-    id: 'section-16-additional-disclosures',
-    number: '16',
-    title: 'Additional Disclosures & Google Play Data Safety Guidance',
-    shortTitle: '16. Google Play Data Safety',
-    summary: 'Summary table to assist the developer in filling out the Google Play Data Safety form in Google Play Console.',
-    content: [
-      `To assist both players and the developer during Google Play Console submission, the table below maps FluffyDoll's data practices to the **Google Play Data Safety Form**:`,
-      `• **Data Collection:** FluffyDoll does not collect personally identifiable information directly unless the user contacts support or if third-party SDKs are enabled.`,
-      `• **Data Sharing:** Data is not sold or shared with third parties for independent commercial marketing.`,
-      `• **Security Practices:** Data in transit is encrypted using standard HTTPS/TLS where network calls exist.`,
-      `• **Data Deletion Mechanism:** Users can request deletion of support correspondence by contacting the designated privacy email, and can delete all local data by uninstalling the application or clearing storage in Android system settings.`,
-      `*Disclaimer:* This guidance does not constitute formal legal advice. The developer must verify their actual compiled APK/AAB dependencies before certifying their Data Safety declaration in Google Play Console.`
+      'If you have questions about this Privacy Policy, want to exercise your rights, or want to raise a concern:',
+      '• **Email:** [fluffydoll-support@sooubh.in](mailto:fluffydoll-support@sooubh.in)',
+      '• **Developer:** Sourabh Singh (Sooubh), Nashik, Maharashtra, India',
+      '• **Website:** https://fluffydoll.sooubh.in/'
     ]
   }
 ];

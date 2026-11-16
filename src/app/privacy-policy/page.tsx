@@ -10,8 +10,8 @@ import { Footer } from '../../components/Footer';
 import { PrintButton } from '../../components/PrintButton';
 
 export const metadata: Metadata = {
-  title: 'FluffyDoll — Official Privacy Policy & Google Play Compliance',
-  description: 'Official Privacy Policy documentation and Google Play Store compliance declarations for FluffyDoll, an Android casual puzzle game built with Flutter & Flame.',
+  title: 'FluffyDoll Privacy Policy — Official Legal & Privacy Documentation',
+  description: 'Official Privacy Policy for the FluffyDoll mobile game. Effective 16 November 2026. Developer: Sourabh Singh (Sooubh).',
   alternates: {
     canonical: '/privacy-policy',
   },
@@ -58,33 +58,65 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <h1 className="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">
-            FluffyDoll Official Privacy Policy
+            FluffyDoll Privacy Policy
           </h1>
 
-          <p className="mt-3 text-xs sm:text-sm text-stone-500">
-            <span>Effective Date: <strong>{POLICY_METADATA.effectiveDate}</strong></span>
-            <span className="mx-2" aria-hidden="true">·</span>
-            <span>Last Updated: <strong>{POLICY_METADATA.lastUpdated}</strong></span>
-            <span className="mx-2" aria-hidden="true">·</span>
-            <span>App Version: <strong>{POLICY_METADATA.policyVersion}</strong></span>
+          {/* Key Facts Summary Box */}
+          <div className="mt-5 p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200/80 text-xs sm:text-sm space-y-2 text-stone-700">
+            <div>
+              <span className="font-bold text-stone-900">Effective date: </span>
+              <span>{POLICY_METADATA.effectiveDate}</span>
+            </div>
+            <div>
+              <span className="font-bold text-stone-900">Last updated: </span>
+              <span>{POLICY_METADATA.lastUpdated}</span>
+            </div>
+            <div>
+              <span className="font-bold text-stone-900">Developer / data controller: </span>
+              <span>{POLICY_METADATA.developerName}, {POLICY_METADATA.developerLocation}</span>
+            </div>
+            <div>
+              <span className="font-bold text-stone-900">Contact and grievance email: </span>
+              <a 
+                href={`mailto:${POLICY_METADATA.developerEmail}`} 
+                className="text-pink-600 underline font-medium hover:text-pink-800"
+              >
+                {POLICY_METADATA.developerEmail}
+              </a>
+            </div>
+            <div>
+              <span className="font-bold text-stone-900">Website: </span>
+              <a 
+                href={POLICY_METADATA.websiteUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-pink-600 underline font-medium hover:text-pink-800"
+              >
+                {POLICY_METADATA.websiteUrl}
+              </a>
+            </div>
+          </div>
+
+          <p className="mt-5 text-sm sm:text-base text-stone-700 leading-relaxed">
+            This Privacy Policy explains what information the FluffyDoll mobile game (&quot;FluffyDoll&quot;, &quot;the app&quot;, &quot;we&quot;, &quot;us&quot;) collects, why we collect it, how it is used, who it is shared with, how long it is kept, and the choices and rights you have. Please read it carefully. By installing or using the app you acknowledge this policy.
           </p>
 
-          <p className="mt-4 text-sm sm:text-base text-stone-600 leading-relaxed">
-            This Privacy Policy describes how information is collected, used, and disclosed in connection with the mobile application <strong>FluffyDoll</strong>, a casual puzzle game built with Flutter and Flame for Android devices and distributed through the Google Play Store.
-          </p>
+          <div className="mt-4 p-4 bg-amber-50/80 border border-amber-200 rounded-xl text-xs sm:text-sm text-amber-900 font-medium leading-relaxed">
+            FluffyDoll is intended for a general audience aged 13 and older. It is not directed at children under 13.
+          </div>
         </header>
 
         {/* Compact Table of Contents */}
         <TableOfContents />
 
-        {/* Complete Policy Sections 1 to 16 */}
+        {/* Complete Policy Sections 1 to 15 */}
         <div className="divide-y divide-stone-100">
           {POLICY_SECTIONS.map((section) => (
             <PolicySectionCard key={section.id} section={section} />
           ))}
         </div>
 
-        {/* Contact and Data Deletion Section */}
+        {/* Contact and Grievance Section */}
         <ContactSection />
 
       </main>

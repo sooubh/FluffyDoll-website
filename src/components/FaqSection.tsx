@@ -21,12 +21,12 @@ const FAQS: FaqItem[] = [
   {
     id: 'child-safety',
     question: 'Is FluffyDoll safe for children and families?',
-    answer: 'Yes. FluffyDoll complies strictly with the Google Play Families Policy and the Children’s Online Privacy Protection Act (COPPA). The game does not collect personal contact information from children and contains no violent or inappropriate themes.',
+    answer: 'FluffyDoll is intended for a general audience aged 13 and older and is not directed at children under 13. The game contains no violent or inappropriate themes and does not collect personal contact information from children.',
   },
   {
     id: 'save-progress',
     question: 'How is my puzzle progress and high score saved?',
-    answer: 'Your gameplay progress, unlocked outfits, and high scores are saved safely on your local Android device storage. If you clear your Android application cache or uninstall the app without backing up, your local puzzle progress will be reset.',
+    answer: 'Your gameplay progress, unlocked outfits, and high scores are saved safely on your local Android device storage. If you choose to sign in to Google Play Games, your progress is backed up securely to your own Google account via cloud save.',
   },
   {
     id: 'engine-performance',
@@ -38,11 +38,11 @@ const FAQS: FaqItem[] = [
     question: 'Where can I read the official Privacy Policy and Data Safety information?',
     answer: (
       <span>
-        You can view our verified, 16-section legal documentation anytime on our dedicated{' '}
+        You can view our verified official legal documentation anytime on our dedicated{' '}
         <Link href="/privacy-policy" className="text-pink-600 underline font-bold hover:text-pink-800">
           Official Privacy Policy Page
         </Link>
-        , which includes our full Google Play Data Safety breakdown and contact information.
+        , which includes our complete data practices, summary table, and contact information.
       </span>
     ),
   },

@@ -76,26 +76,26 @@ export const GameFooter: React.FC = () => {
               </li>
               <li>
                 <Link 
-                  href="/privacy-policy#contact-and-deletion" 
+                  href="/privacy-policy#section-15" 
                   className="hover:text-pink-400 transition-colors"
                 >
-                  Contact &amp; Data Deletion Requests
+                  Contact &amp; Grievance Redressal
                 </Link>
               </li>
               <li>
                 <Link 
-                  href="/privacy-policy#section-16" 
+                  href="/privacy-policy#section-2-8" 
                   className="hover:text-pink-400 transition-colors"
                 >
-                  Google Play Data Safety Table
+                  Data Collection Summary Table
                 </Link>
               </li>
               <li>
                 <Link 
-                  href="/privacy-policy#section-8" 
+                  href="/privacy-policy#section-10" 
                   className="hover:text-pink-400 transition-colors"
                 >
-                  Children&apos;s Online Privacy (COPPA)
+                  Children &amp; Minors (13+)
                 </Link>
               </li>
             </ul>
@@ -106,7 +106,7 @@ export const GameFooter: React.FC = () => {
         {/* Bottom Credits & Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
           <p>
-            &copy; 2026 FluffyDoll. Built with Flutter &amp; Flame Engine for Android.
+            &copy; 2026 FluffyDoll. Developed by Sourabh Singh (Sooubh). Built with Flutter &amp; Flame Engine for Android.
           </p>
           <p className="text-[11px] text-stone-500 text-center sm:text-right">
             Google Play and the Google Play logo are trademarks of Google LLC.

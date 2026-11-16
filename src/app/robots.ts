@@ -12,7 +12,7 @@ const getBaseUrl = () => {
   if (process.env.VERCEL_URL) {
     return `https://${process.env.VERCEL_URL}`;
   }
-  return 'https://fluffydoll.vercel.app';
+  return 'https://fluffydoll.sooubh.in';
 };
 
 export default function robots(): MetadataRoute.Robots {
