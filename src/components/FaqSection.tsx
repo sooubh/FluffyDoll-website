@@ -11,38 +11,38 @@ const FAQS: FaqItem[] = [
   {
     id: 'free-to-play',
     question: 'Is FluffyDoll free to play?',
-    answer: 'Yes! FluffyDoll is completely free to download and play on Android devices. You can play through levels, enjoy squishy doll physics, and unlock achievements without mandatory paywalls.',
+    answer: 'Yes. FluffyDoll is completely free to download and play on Android. All puzzle stages, companions, and wardrobe unlocks can be obtained through natural gameplay without mandatory paywalls.',
   },
   {
     id: 'offline-support',
-    question: 'Can I play FluffyDoll without an internet or Wi-Fi connection?',
-    answer: 'Absolutely. FluffyDoll is engineered as a 100% offline-first game. You do not need active Wi-Fi or cellular mobile data to play puzzle levels, save your local progress, or customize your plush companions.',
+    question: 'Can I play without an internet connection?',
+    answer: 'Yes. FluffyDoll is designed with a strict offline-first architecture. You do not need Wi-Fi or cellular mobile data to launch the game, progress through levels, or save your high scores.',
   },
   {
-    id: 'child-safety',
-    question: 'Is FluffyDoll safe for children and families?',
-    answer: 'FluffyDoll is intended for a general audience aged 13 and older and is not directed at children under 13. The game contains no violent or inappropriate themes and does not collect personal contact information from children.',
+    id: 'target-audience',
+    question: 'What is the intended audience and age rating?',
+    answer: 'FluffyDoll is intended for a general audience aged 13 and older and is not directed at children under 13. The game contains zero violent or mature themes, requires no user account, and does not harvest personal user data.',
   },
   {
     id: 'save-progress',
-    question: 'How is my puzzle progress and high score saved?',
-    answer: 'Your gameplay progress, unlocked outfits, and high scores are saved safely on your local Android device storage. If you choose to sign in to Google Play Games, your progress is backed up securely to your own Google account via cloud save.',
+    question: 'How is game progress and customization saved?',
+    answer: 'Your gameplay progress, unlocked doll outfits, and high scores are saved locally in private device storage. If you choose to sign in to Google Play Games, progress is automatically synced to your personal Google account cloud save.',
   },
   {
-    id: 'engine-performance',
-    question: 'What technology powers FluffyDoll?',
-    answer: 'FluffyDoll is proudly built with Google Flutter and the Flame 2D game engine. This stack provides hardware-accelerated 60 FPS graphics, responsive soft-body physics, and battery-friendly performance on Android phones and tablets.',
+    id: 'tech-stack',
+    question: 'What engine and technology powers the game?',
+    answer: 'FluffyDoll is natively built with Google Flutter and the Flame 2D game engine. This stack provides hardware-accelerated 60 FPS graphics, responsive soft-body physics, and low battery consumption.',
   },
   {
     id: 'privacy-policy-link',
     question: 'Where can I read the official Privacy Policy and Data Safety information?',
     answer: (
       <span>
-        You can view our verified official legal documentation anytime on our dedicated{' '}
-        <Link href="/privacy-policy" className="text-pink-600 underline font-bold hover:text-pink-800">
+        You can review our verified, 15-section legal documentation anytime on our{' '}
+        <Link href="/privacy-policy" className="text-zinc-950 underline font-semibold hover:text-zinc-700">
           Official Privacy Policy Page
         </Link>
-        , which includes our complete data practices, summary table, and contact information.
+        , which includes data retention schedules, third-party service disclosures, and contact details.
       </span>
     ),
   },
@@ -50,39 +50,41 @@ const FAQS: FaqItem[] = [
 
 export const FaqSection: React.FC = () => {
   return (
-    <section id="faq" className="py-20 sm:py-28 bg-white border-b border-stone-200/60">
+    <section id="faq" className="py-20 sm:py-28 bg-white border-b border-zinc-200/80">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="text-xs uppercase font-extrabold tracking-wider text-pink-600 bg-pink-100/70 border border-pink-200 px-3.5 py-1 rounded-full">
-            Got Questions?
+        <div className="max-w-2xl mb-14">
+          <span className="text-xs uppercase font-mono tracking-wider text-zinc-500 font-semibold block mb-2">
+            Clear Answers
           </span>
-          <h2 className="mt-4 text-3xl sm:text-4xl font-black text-stone-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight">
             Frequently Asked Questions
           </h2>
-          <p className="mt-4 text-base text-stone-600 leading-relaxed">
-            Everything you need to know about FluffyDoll, offline gameplay, and privacy standards.
+          <p className="mt-4 text-base text-zinc-600 leading-relaxed font-normal">
+            Key details regarding gameplay mechanics, offline support, device compatibility, and data safety.
           </p>
         </div>
 
-        {/* Accordion using modern native semantic <details name="faq"> */}
-        <div className="space-y-4">
+        {/* Accordion using semantic <details name="faq"> */}
+        <div className="space-y-3">
           {FAQS.map((faq, index) => (
             <details
               key={faq.id}
               name="faq"
               id={faq.id}
               open={index === 0 ? true : undefined}
-              className="group rounded-2xl border border-stone-200/80 bg-stone-50/50 p-5 open:bg-white open:border-pink-300 open:shadow-md open:shadow-pink-100/40 transition-all duration-200"
+              className="group rounded-2xl border border-zinc-200/90 bg-[#FBFBFA] p-5 open:bg-white open:border-zinc-400 open:shadow-xs transition-all duration-200"
             >
-              <summary className="flex cursor-pointer items-center justify-between text-base sm:text-lg font-bold text-stone-900 group-hover:text-pink-600 select-none list-none focus:outline-hidden">
+              <summary className="flex cursor-pointer items-center justify-between text-base sm:text-lg font-bold text-zinc-900 group-hover:text-zinc-950 select-none list-none focus:outline-hidden">
                 <span className="pr-4">{faq.question}</span>
-                <span className="ml-2 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white border border-stone-200 text-stone-500 group-open:rotate-180 group-open:bg-pink-100 group-open:text-pink-700 group-open:border-pink-300 transition-transform">
-                  &darr;
+                <span className="ml-2 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-zinc-200 text-zinc-500 group-open:rotate-180 transition-transform">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
                 </span>
               </summary>
-              <div className="mt-3.5 pt-3 border-t border-stone-100 text-sm sm:text-base text-stone-600 leading-relaxed">
+              <div className="mt-3.5 pt-3 border-t border-zinc-100 text-sm sm:text-base text-zinc-600 leading-relaxed font-normal">
                 {faq.answer}
               </div>
             </details>

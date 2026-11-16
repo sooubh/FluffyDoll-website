@@ -4,54 +4,53 @@ import { FluffyDollLogo } from './FluffyDollLogo';
 
 export const GameFooter: React.FC = () => {
   return (
-    <footer className="bg-stone-900 text-stone-300 border-t border-stone-800 pt-16 pb-12">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-zinc-950 text-zinc-400 border-t border-zinc-800 text-xs">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-stone-800">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           
           {/* Brand Column */}
           <div className="md:col-span-5 space-y-4">
-            <Link href="/" className="inline-block">
-              <FluffyDollLogo size="md" className="[&_span]:text-white" />
-            </Link>
-            <p className="text-sm text-stone-400 max-w-sm leading-relaxed">
-              FluffyDoll is a delightful casual mobile puzzle game built with Google Flutter and the Flame 2D game engine. Squish, match, and relax with adorable plush companions.
+            <FluffyDollLogo size="md" showSubtitle={false} className="text-white brightness-125" />
+            
+            <p className="text-zinc-400 text-xs sm:text-sm max-w-sm leading-relaxed">
+              A calm casual 2D puzzle game built with Flutter &amp; Flame Engine for Android. Tactile soft-body physics with zero stressful timers.
             </p>
-            <div className="flex items-center gap-2 text-xs text-stone-400">
-              <span className="w-2 h-2 rounded-full bg-emerald-400" />
-              <span>Available for Android · Google Play</span>
+
+            <div className="pt-2 text-zinc-500 font-mono text-[11px]">
+              Engineered by Sourabh Singh (Sooubh) · Nashik, Maharashtra, India
             </div>
           </div>
 
           {/* Quick Links Column */}
           <div className="md:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-200">
               Game
             </h4>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm text-zinc-400">
               <li>
-                <a href="#features" className="hover:text-pink-400 transition-colors">
-                  Key Features
+                <a href="#features" className="hover:text-white transition-colors">
+                  Features
                 </a>
               </li>
               <li>
-                <a href="#dolls" className="hover:text-pink-400 transition-colors">
-                  Meet the Dolls
+                <a href="#dolls" className="hover:text-white transition-colors">
+                  Companions
                 </a>
               </li>
               <li>
-                <a href="#gameplay" className="hover:text-pink-400 transition-colors">
-                  Gameplay &amp; Boosters
+                <a href="#gameplay" className="hover:text-white transition-colors">
+                  How It Works
                 </a>
               </li>
               <li>
-                <a href="#specs" className="hover:text-pink-400 transition-colors">
-                  Android Specs
+                <a href="#specs" className="hover:text-white transition-colors">
+                  Device Standards
                 </a>
               </li>
               <li>
-                <a href="#faq" className="hover:text-pink-400 transition-colors">
-                  Frequently Asked Questions
+                <a href="#faq" className="hover:text-white transition-colors">
+                  FAQ
                 </a>
               </li>
             </ul>
@@ -59,17 +58,17 @@ export const GameFooter: React.FC = () => {
 
           {/* Legal & Compliance Column */}
           <div className="md:col-span-4 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-200">
               Compliance &amp; Legal
             </h4>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm text-zinc-400">
               <li>
                 <Link 
                   href="/privacy-policy" 
-                  className="inline-flex items-center gap-1.5 text-pink-300 hover:text-pink-200 font-semibold transition-colors"
+                  className="inline-flex items-center gap-2 text-zinc-200 hover:text-white transition-colors font-medium"
                 >
                   <span>Official Privacy Policy</span>
-                  <span className="text-[10px] bg-pink-500/20 text-pink-300 px-1.5 py-0.5 rounded border border-pink-400/30">
+                  <span className="text-[10px] bg-zinc-800 text-zinc-300 px-1.5 py-0.5 rounded border border-zinc-700">
                     Google Play
                   </span>
                 </Link>
@@ -77,7 +76,7 @@ export const GameFooter: React.FC = () => {
               <li>
                 <Link 
                   href="/privacy-policy#section-15" 
-                  className="hover:text-pink-400 transition-colors"
+                  className="hover:text-white transition-colors"
                 >
                   Contact &amp; Grievance Redressal
                 </Link>
@@ -85,7 +84,7 @@ export const GameFooter: React.FC = () => {
               <li>
                 <Link 
                   href="/privacy-policy#section-2-8" 
-                  className="hover:text-pink-400 transition-colors"
+                  className="hover:text-white transition-colors"
                 >
                   Data Collection Summary Table
                 </Link>
@@ -93,9 +92,17 @@ export const GameFooter: React.FC = () => {
               <li>
                 <Link 
                   href="/privacy-policy#section-10" 
-                  className="hover:text-pink-400 transition-colors"
+                  className="hover:text-white transition-colors"
                 >
-                  Children &amp; Minors (13+)
+                  Audience &amp; Minors (13+)
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/privacy-policy#section-8" 
+                  className="hover:text-white transition-colors"
+                >
+                  Choices &amp; Player Controls
                 </Link>
               </li>
             </ul>
@@ -103,12 +110,12 @@ export const GameFooter: React.FC = () => {
 
         </div>
 
-        {/* Bottom Credits & Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
+        {/* Bottom Credits & Legal Notice */}
+        <div className="mt-14 pt-8 border-t border-zinc-850 flex flex-col sm:flex-row items-center justify-between gap-4 text-zinc-500">
           <p>
             &copy; 2026 FluffyDoll. Developed by Sourabh Singh (Sooubh). Built with Flutter &amp; Flame Engine for Android.
           </p>
-          <p className="text-[11px] text-stone-500 text-center sm:text-right">
+          <p className="text-[11px] text-zinc-500 text-center sm:text-right">
             Google Play and the Google Play logo are trademarks of Google LLC.
           </p>
         </div>

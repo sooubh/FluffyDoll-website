@@ -44,7 +44,7 @@ export const PolicySectionCard: React.FC<SectionCardProps> = ({ section }) => {
                   href={href}
                   target={href.startsWith('mailto:') ? undefined : '_blank'}
                   rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-                  className="text-pink-600 underline font-medium hover:text-pink-800 transition-colors"
+                  className="text-zinc-950 underline font-medium hover:text-zinc-700 transition-colors"
                 >
                   {label}
                 </a>
@@ -59,7 +59,7 @@ export const PolicySectionCard: React.FC<SectionCardProps> = ({ section }) => {
                 href={part}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-pink-600 underline font-medium hover:text-pink-800 break-all transition-colors"
+                className="text-zinc-950 underline font-medium hover:text-zinc-700 break-all transition-colors"
               >
                 {part}
               </a>
@@ -71,7 +71,7 @@ export const PolicySectionCard: React.FC<SectionCardProps> = ({ section }) => {
               <a
                 key={index}
                 href={`mailto:${part}`}
-                className="text-pink-600 underline font-medium hover:text-pink-800 transition-colors"
+                className="text-zinc-950 underline font-medium hover:text-zinc-700 transition-colors"
               >
                 {part}
               </a>
@@ -136,7 +136,7 @@ export const PolicySectionCard: React.FC<SectionCardProps> = ({ section }) => {
           <ul key={bIdx} className="space-y-2.5 my-3 list-none pl-0">
             {block.items.map((bullet, idx) => (
               <li key={idx} className="flex items-start gap-2.5 text-stone-700 text-sm sm:text-base leading-relaxed">
-                <span className="w-1.5 h-1.5 rounded-full bg-pink-500 mt-2 shrink-0" aria-hidden="true" />
+                <span className="w-1.5 h-1.5 rounded-full bg-zinc-800 mt-2 shrink-0" aria-hidden="true" />
                 <span className="flex-1">{renderFormattedText(bullet)}</span>
               </li>
             ))}

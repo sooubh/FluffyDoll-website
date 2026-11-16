@@ -1,80 +1,92 @@
 import React from 'react';
 import { GameShowcase } from './GameShowcase';
+import { IconGooglePlay, IconArrowRight, IconCheck } from './icons/GameIcons';
 
 export const HeroSection: React.FC = () => {
   return (
-    <section className="relative overflow-hidden pt-10 pb-18 sm:pt-16 sm:pb-24 bg-gradient-to-b from-[#FFF5F2] via-[#FFFDFB] to-white">
-      {/* Gentle Ambient Warm Glow */}
-      <div 
-        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-80 bg-gradient-to-tr from-pink-200/30 via-rose-100/20 to-amber-100/20 blur-3xl -z-10" 
-        aria-hidden="true" 
-      />
-
+    <section className="relative overflow-hidden pt-12 pb-20 sm:pt-16 sm:pb-24 bg-[#FBFBFA] border-b border-zinc-200/70">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* Left Column: Game Headlines & CTAs */}
+          {/* Left Column: Game Headlines & Primary Value */}
           <div className="lg:col-span-7 text-center lg:text-left">
             
-            {/* Friendly Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-100/70 border border-pink-200/80 text-pink-700 text-xs font-semibold mb-5 shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-pink-500" aria-hidden="true" />
-              <span>Cozy Casual Puzzle · Now on Android</span>
+            {/* Status Pill */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-zinc-200 text-zinc-700 text-xs font-medium mb-6 shadow-2xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
+              <span>Available for Android · Flutter &amp; Flame 2D</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-stone-900 tracking-tight leading-[1.12]">
-              The cozy squish puzzle that feels like a{' '}
-              <span className="bg-gradient-to-r from-pink-500 via-rose-500 to-purple-600 bg-clip-text text-transparent">
-                warm hug.
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tight leading-[1.12]">
+              Tactile plush physics, handcrafted for{' '}
+              <span className="underline decoration-zinc-300 underline-offset-8">
+                pure relaxation.
               </span>
             </h1>
 
             {/* Subheading */}
-            <p className="mt-5 text-base sm:text-lg text-stone-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
-              Squish, match, and relax with lovable plush companions. Experience delightfully responsive soft-body physics, customizable doll outfits, and hundreds of gentle stages with zero stressful timers.
+            <p className="mt-5 text-base sm:text-lg text-zinc-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
+              FluffyDoll is a calm 2D puzzle adventure with genuine soft-body compression, customizable companions, and hundreds of gentle stages. No ticking clocks, no high-pressure paywalls.
             </p>
 
             {/* Call To Action Buttons */}
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5">
-              {/* Authentic Google Play Store Button */}
+              {/* Google Play Store Button */}
               <a
                 href="#download"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-2xl bg-stone-900 hover:bg-stone-800 text-white shadow-xl shadow-stone-900/10 hover:shadow-stone-900/20 transition-all hover:-translate-y-0.5 active:translate-y-0"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white shadow-xs transition-all active:scale-95"
               >
-                <svg className="w-6 h-6 fill-current text-white shrink-0" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M3.609 1.814L13.792 12 3.61 22.186a1.996 1.996 0 0 1-.61-1.423V3.237c0-.55.228-1.047.609-1.423zm11.235 11.238l2.585-2.585-12.18-7.032 9.595 9.617zm0 1.896l-9.595 9.617 12.18-7.032-2.585-2.585zm1.052-1.052l3.418 1.973c.96.554.96 1.458 0 2.012l-2.482 1.433-2.316-2.316 1.38-3.102z" />
-                </svg>
+                <IconGooglePlay className="w-5 h-5 fill-current text-white shrink-0" />
                 <div className="text-left">
-                  <span className="block text-[10px] uppercase font-bold tracking-wider text-stone-300">GET IT ON</span>
-                  <span className="block text-base font-extrabold tracking-tight leading-none">Google Play</span>
+                  <span className="block text-[10px] uppercase font-bold tracking-wider text-zinc-400 leading-none">GET IT ON</span>
+                  <span className="block text-sm font-bold tracking-tight leading-none mt-1">Google Play</span>
                 </div>
               </a>
 
-              {/* Secondary CTA: Meet the Dolls */}
+              {/* Secondary CTA: Companions */}
               <a
                 href="#dolls"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white hover:bg-stone-50 text-stone-800 font-bold text-sm border-2 border-stone-200/80 shadow-2xs hover:border-pink-300 transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-white hover:bg-zinc-50 text-zinc-800 font-medium text-sm border border-zinc-200 shadow-2xs hover:border-zinc-300 transition-all"
               >
-                <span>Meet the Dolls</span>
-                <span>&rarr;</span>
+                <span>Meet the Companions</span>
+                <IconArrowRight className="w-4 h-4 text-zinc-500" />
               </a>
             </div>
 
-            {/* Cozy Highlights Ribbon */}
-            <div className="mt-9 pt-7 border-t border-pink-100/70 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2.5 text-xs font-semibold text-stone-600">
-              <span className="inline-flex items-center gap-1.5">
-                <span className="text-pink-500">🧸</span> Soft-body plush physics
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <span className="text-emerald-500">📴</span> 100% Offline playable
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <span className="text-amber-500">☕</span> No timers or pressure
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <span className="text-purple-500">👗</span> Customizable doll wardrobe
-              </span>
+            {/* Value Guarantees */}
+            <div className="mt-10 pt-6 border-t border-zinc-200/80 grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
+              <div>
+                <span className="flex items-center gap-1.5 text-xs font-semibold text-zinc-900">
+                  <IconCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  <span>Flame Physics</span>
+                </span>
+                <span className="text-[11px] text-zinc-500 block mt-0.5">True soft-body loop</span>
+              </div>
+
+              <div>
+                <span className="flex items-center gap-1.5 text-xs font-semibold text-zinc-900">
+                  <IconCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  <span>100% Offline</span>
+                </span>
+                <span className="text-[11px] text-zinc-500 block mt-0.5">Zero cellular data</span>
+              </div>
+
+              <div>
+                <span className="flex items-center gap-1.5 text-xs font-semibold text-zinc-900">
+                  <IconCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  <span>Zero Pressure</span>
+                </span>
+                <span className="text-[11px] text-zinc-500 block mt-0.5">Untimed puzzle play</span>
+              </div>
+
+              <div>
+                <span className="flex items-center gap-1.5 text-xs font-semibold text-zinc-900">
+                  <IconCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  <span>&lt; 40 MB Size</span>
+                </span>
+                <span className="text-[11px] text-zinc-500 block mt-0.5">Instant Android install</span>
+              </div>
             </div>
 
           </div>

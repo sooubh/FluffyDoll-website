@@ -1,176 +1,179 @@
 'use client';
 
 import React, { useState } from 'react';
+import { AvatarBunny, AvatarBear, AvatarCat, AvatarPuppy, IconPhysics, IconSparkle } from './icons/GameIcons';
 
-interface Plushie {
+interface DollCell {
   id: number;
+  type: 'bunny' | 'bear' | 'cat' | 'puppy';
   name: string;
-  emoji: string;
-  color: string;
-  bg: string;
-  border: string;
-  sound: string;
+  avatar: React.ReactNode;
+  physicsNote: string;
 }
 
-const PLUSHIE_TYPES: Plushie[] = [
-  { id: 1, name: 'BunBun', emoji: '🐰', color: 'text-pink-600', bg: 'bg-pink-100/90', border: 'border-pink-300', sound: 'Boing! 🐰' },
-  { id: 2, name: 'PuffBear', emoji: '🧸', color: 'text-amber-700', bg: 'bg-amber-100/90', border: 'border-amber-300', sound: 'Warm Hug! 🧸' },
-  { id: 3, name: 'Mochi', emoji: '🐱', color: 'text-purple-600', bg: 'bg-purple-100/90', border: 'border-purple-300', sound: 'Purr... 🐱' },
-  { id: 4, name: 'Dottie', emoji: '🐶', color: 'text-sky-600', bg: 'bg-sky-100/90', border: 'border-sky-300', sound: 'Wag wag! 🐶' },
-  { id: 5, name: 'Berry', emoji: '🍓', color: 'text-rose-600', bg: 'bg-rose-100/90', border: 'border-rose-300', sound: 'Sweet pop! 🍓' },
+const CELL_PRESETS: Omit<DollCell, 'id'>[] = [
+  { 
+    type: 'bunny', 
+    name: 'BunBun', 
+    avatar: <AvatarBunny className="w-10 h-10 text-zinc-800" />,
+    physicsNote: 'Marshmallow soft rebound' 
+  },
+  { 
+    type: 'bear', 
+    name: 'PuffBear', 
+    avatar: <AvatarBear className="w-10 h-10 text-zinc-800" />,
+    physicsNote: 'High-density hug compression' 
+  },
+  { 
+    type: 'cat', 
+    name: 'Mochi', 
+    avatar: <AvatarCat className="w-10 h-10 text-zinc-800" />,
+    physicsNote: 'Velveteen elastic settling' 
+  },
+  { 
+    type: 'puppy', 
+    name: 'Dottie', 
+    avatar: <AvatarPuppy className="w-10 h-10 text-zinc-800" />,
+    physicsNote: 'Dynamic spring-back' 
+  },
 ];
 
 export const GameShowcase: React.FC = () => {
-  const [board, setBoard] = useState<Plushie[]>([
-    PLUSHIE_TYPES[0], PLUSHIE_TYPES[1], PLUSHIE_TYPES[2],
-    PLUSHIE_TYPES[1], PLUSHIE_TYPES[0], PLUSHIE_TYPES[3],
-    PLUSHIE_TYPES[2], PLUSHIE_TYPES[3], PLUSHIE_TYPES[0],
+  const [cells, setCells] = useState<DollCell[]>([
+    { id: 1, ...CELL_PRESETS[0] },
+    { id: 2, ...CELL_PRESETS[1] },
+    { id: 3, ...CELL_PRESETS[2] },
+    { id: 4, ...CELL_PRESETS[1] },
+    { id: 5, ...CELL_PRESETS[0] },
+    { id: 6, ...CELL_PRESETS[3] },
+    { id: 7, ...CELL_PRESETS[2] },
+    { id: 8, ...CELL_PRESETS[3] },
+    { id: 9, ...CELL_PRESETS[0] },
   ]);
-  const [squishingIdx, setSquishingIdx] = useState<number | null>(null);
-  const [activeMessage, setActiveMessage] = useState<string>('Tap any plushie to squish!');
+
+  const [activeIdx, setActiveIdx] = useState<number | null>(null);
+  const [statusMessage, setStatusMessage] = useState<string>('Select any plush doll to trigger Flame 2D physics');
   const [squishCount, setSquishCount] = useState<number>(0);
-  const [isRainbowActive, setIsRainbowActive] = useState<boolean>(false);
+  const [cascadeActive, setCascadeActive] = useState<boolean>(false);
 
-  const handleSquish = (index: number) => {
-    setSquishingIdx(index);
-    const doll = board[index];
-    setSquishCount((c) => c + 1);
-
-    const squishMessages = [
-      `${doll.name} squished so soft! ✨`,
-      `Boing! ${doll.sound}`,
-      `Squishy combo +100! 💖`,
-      `Maximum fluffiness unlocked! 🧸`,
-    ];
-    setActiveMessage(squishMessages[Math.floor(Math.random() * squishMessages.length)]);
+  const handleCellClick = (index: number) => {
+    setActiveIdx(index);
+    const doll = cells[index];
+    setSquishCount((prev) => prev + 1);
+    setStatusMessage(`${doll.name}: ${doll.physicsNote}`);
 
     setTimeout(() => {
-      setSquishingIdx(null);
+      setActiveIdx(null);
     }, 450);
   };
 
-  const handleShuffle = () => {
-    setActiveMessage('Shuffled the toybox! 🎲');
-    setBoard((prev) => [...prev].sort(() => Math.random() - 0.5));
-  };
-
-  const handleRainbowBooster = () => {
-    setIsRainbowActive(true);
-    setActiveMessage('🌈 Rainbow Yarn wave cleared the board!');
-    setSquishCount((c) => c + 5);
+  const handleCascadeSimulation = () => {
+    setCascadeActive(true);
+    setStatusMessage('Cascade simulation: soft-body collision active across all 9 cells');
+    setSquishCount((prev) => prev + 9);
 
     setTimeout(() => {
-      setIsRainbowActive(false);
-      setBoard([
-        PLUSHIE_TYPES[Math.floor(Math.random() * PLUSHIE_TYPES.length)],
-        PLUSHIE_TYPES[Math.floor(Math.random() * PLUSHIE_TYPES.length)],
-        PLUSHIE_TYPES[Math.floor(Math.random() * PLUSHIE_TYPES.length)],
-        PLUSHIE_TYPES[Math.floor(Math.random() * PLUSHIE_TYPES.length)],
-        PLUSHIE_TYPES[Math.floor(Math.random() * PLUSHIE_TYPES.length)],
-        PLUSHIE_TYPES[Math.floor(Math.random() * PLUSHIE_TYPES.length)],
-        PLUSHIE_TYPES[Math.floor(Math.random() * PLUSHIE_TYPES.length)],
-        PLUSHIE_TYPES[Math.floor(Math.random() * PLUSHIE_TYPES.length)],
-        PLUSHIE_TYPES[Math.floor(Math.random() * PLUSHIE_TYPES.length)],
-      ]);
+      setCascadeActive(false);
+      // Subtle reorder
+      setCells((prev) => [...prev].sort(() => Math.random() - 0.5));
     }, 600);
+  };
+
+  const handleReset = () => {
+    setSquishCount(0);
+    setStatusMessage('Grid reset to standard 3x3 layout');
+    setCells([
+      { id: 1, ...CELL_PRESETS[0] },
+      { id: 2, ...CELL_PRESETS[1] },
+      { id: 3, ...CELL_PRESETS[2] },
+      { id: 4, ...CELL_PRESETS[1] },
+      { id: 5, ...CELL_PRESETS[0] },
+      { id: 6, ...CELL_PRESETS[3] },
+      { id: 7, ...CELL_PRESETS[2] },
+      { id: 8, ...CELL_PRESETS[3] },
+      { id: 9, ...CELL_PRESETS[0] },
+    ]);
   };
 
   return (
     <div className="relative mx-auto w-full max-w-sm sm:max-w-md select-none">
-      {/* Cozy Handheld Console Frame */}
-      <div className="relative rounded-[2.5rem] bg-gradient-to-b from-stone-900 via-stone-850 to-stone-900 p-4 sm:p-5 shadow-2xl shadow-pink-900/15 border-4 border-stone-800">
+      {/* Precision Handheld Simulator Housing */}
+      <div className="rounded-3xl bg-white border border-zinc-200/90 p-5 sm:p-6 shadow-sm">
         
-        {/* Cute Console Screen Bezel */}
-        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-b from-[#FFF7F2] via-[#FFF3EB] to-[#FCEEE5] p-4 sm:p-5 border border-pink-200/60 shadow-inner">
-          
-          {/* Top In-Game Bar */}
-          <div className="flex items-center justify-between mb-3.5 bg-white/90 backdrop-blur-xs rounded-2xl px-3.5 py-2 shadow-xs border border-pink-100/80">
-            <div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-stone-600 block">Level 14</span>
-              <p className="text-xs font-extrabold text-stone-800">Sunny Meadow</p>
-            </div>
-            
-            <div className="flex items-center gap-1 text-sm" aria-label="3 Stars earned">
-              <span>⭐</span>
-              <span>⭐</span>
-              <span>⭐</span>
-            </div>
-
-            <div className="text-right">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-pink-600 block">Squishes</span>
-              <p className="text-xs font-black text-pink-600 tabular-nums">{squishCount}</p>
-            </div>
+        {/* Device Status Bar */}
+        <div className="flex items-center justify-between pb-3.5 mb-3.5 border-b border-zinc-100 text-xs">
+          <div className="flex items-center gap-1.5 text-zinc-700 font-medium">
+            <IconPhysics className="w-4 h-4 text-zinc-900" />
+            <span>Flame 2D Physics Simulator</span>
           </div>
 
-          {/* Interactive Status Feedback Pill */}
-          <div className="mb-3 text-center min-h-[1.75rem] flex items-center justify-center">
-            <span 
-              className={`text-xs font-bold px-3 py-1 rounded-full transition-all duration-200 ${
-                isRainbowActive
-                  ? 'bg-gradient-to-r from-pink-500 via-purple-500 to-amber-500 text-white shadow-md'
-                  : 'bg-white/90 text-pink-700 border border-pink-200/80 shadow-2xs'
-              }`}
-            >
-              {activeMessage}
-            </span>
+          <div className="flex items-center gap-3 text-zinc-500 font-mono text-[11px]">
+            <span>60 FPS</span>
+            <span className="text-zinc-300">|</span>
+            <span className="tabular-nums">Passes: {squishCount}</span>
           </div>
-
-          {/* 3x3 Plushie Squish Grid */}
-          <div className="grid grid-cols-3 gap-2.5 sm:gap-3 p-2.5 bg-white/70 rounded-2xl border border-pink-100 shadow-inner">
-            {board.map((doll, index) => {
-              const isSquishing = squishingIdx === index || isRainbowActive;
-              return (
-                <button
-                  key={index}
-                  type="button"
-                  onClick={() => handleSquish(index)}
-                  aria-label={`Squish ${doll.name}`}
-                  className={`group relative aspect-square rounded-2xl border-2 flex flex-col items-center justify-center transition-all cursor-pointer shadow-2xs active:scale-90 ${doll.bg} ${doll.border} ${
-                    isSquishing ? 'animate-squish scale-105 ring-2 ring-pink-400' : 'hover:scale-102'
-                  }`}
-                >
-                  <span className="text-3xl sm:text-4xl filter drop-shadow-xs transition-transform group-hover:scale-110">
-                    {doll.emoji}
-                  </span>
-                  <span className={`text-[10px] font-bold mt-1 ${doll.color}`}>
-                    {doll.name}
-                  </span>
-
-                  {/* Soft stitch details in corners */}
-                  <span className="absolute top-1 left-1.5 text-[8px] text-stone-300 font-mono select-none">··</span>
-                  <span className="absolute bottom-1 right-1.5 text-[8px] text-stone-300 font-mono select-none">··</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Interactive Controls */}
-          <div className="mt-3.5 flex items-center justify-between gap-2 pt-2 border-t border-pink-100/80">
-            <button
-              type="button"
-              onClick={handleRainbowBooster}
-              disabled={isRainbowActive}
-              className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 hover:from-purple-600 hover:to-rose-600 text-white font-bold text-xs shadow-xs active:scale-95 transition-all cursor-pointer"
-            >
-              <span>🌈</span>
-              <span>Rainbow Booster</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={handleShuffle}
-              title="Shuffle Dolls"
-              className="px-3 py-2 rounded-xl bg-white hover:bg-stone-50 border border-stone-200 text-stone-600 text-xs font-semibold shadow-2xs transition-colors cursor-pointer"
-            >
-              Shuffle 🎲
-            </button>
-          </div>
-
-          <p className="mt-2 text-center text-[10px] text-stone-600 font-medium">
-            Try it: Tap any plushie above to feel the squish animation!
-          </p>
-
         </div>
+
+        {/* Live Feedback Banner */}
+        <div className="min-h-[2.25rem] mb-3.5 p-2 rounded-xl bg-zinc-50 border border-zinc-200/60 flex items-center justify-between px-3 text-xs">
+          <span className="text-zinc-700 truncate font-medium">
+            {statusMessage}
+          </span>
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 ml-2" aria-hidden="true" />
+        </div>
+
+        {/* 3x3 Vector Plushie Matrix */}
+        <div className="grid grid-cols-3 gap-2.5 p-2 rounded-2xl bg-zinc-100/60 border border-zinc-200/60">
+          {cells.map((cell, idx) => {
+            const isSquishing = activeIdx === idx || cascadeActive;
+            return (
+              <button
+                key={cell.id}
+                type="button"
+                onClick={() => handleCellClick(idx)}
+                aria-label={`Squish ${cell.name}`}
+                className={`relative aspect-square rounded-xl bg-white border flex flex-col items-center justify-center p-2 cursor-pointer transition-all duration-200 shadow-2xs active:scale-95 ${
+                  isSquishing
+                    ? 'border-zinc-900 ring-2 ring-zinc-900/10 scale-102'
+                    : 'border-zinc-200/80 hover:border-zinc-400 hover:shadow-xs'
+                }`}
+              >
+                <div className={`transition-transform duration-300 ${isSquishing ? 'scale-y-75 scale-x-120' : ''}`}>
+                  {cell.avatar}
+                </div>
+                <span className="text-[10px] font-medium text-zinc-600 mt-1 tracking-tight">
+                  {cell.name}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Interaction Controls */}
+        <div className="mt-4 pt-3.5 border-t border-zinc-100 flex items-center justify-between gap-2.5">
+          <button
+            type="button"
+            onClick={handleCascadeSimulation}
+            disabled={cascadeActive}
+            className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white font-medium text-xs transition-colors cursor-pointer disabled:opacity-50"
+          >
+            <IconSparkle className="w-3.5 h-3.5" />
+            <span>Simulate Soft Cascade</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={handleReset}
+            className="py-2 px-3 rounded-xl bg-white hover:bg-zinc-100 border border-zinc-200 text-zinc-700 font-medium text-xs transition-colors cursor-pointer"
+          >
+            Reset
+          </button>
+        </div>
+
+        <p className="mt-2.5 text-center text-[11px] text-zinc-400">
+          Interactive client-side demonstration of Flame 2D soft-body matrix
+        </p>
+
       </div>
     </div>
   );

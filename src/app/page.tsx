@@ -11,37 +11,37 @@ import { GameFooter } from '../components/GameFooter';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#FFFDFB] text-stone-900 font-sans antialiased selection:bg-pink-100 selection:text-pink-900">
+    <div className="min-h-screen bg-[#FBFBFA] text-zinc-900 font-sans antialiased selection:bg-zinc-200 selection:text-zinc-900">
       <div id="top" />
 
-      {/* Modern Game Navigation Bar */}
+      {/* Navigation Bar */}
       <GameNavbar />
 
-      {/* Main Game Showcase Content */}
+      {/* Main Game Showcase */}
       <main>
-        {/* Hero Section with Interactive Mini-Game */}
+        {/* Hero Section with Interactive Physics Showcase */}
         <HeroSection />
 
-        {/* Key Gameplay Highlights */}
+        {/* Core Engineered Gameplay */}
         <FeaturesSection />
 
-        {/* Interactive Doll Gallery (BunBun, PuffBear, Mochi, Dottie) */}
+        {/* Collectible Plush Companions */}
         <DollsGallery />
 
-        {/* How to Play & Boosters Showcase */}
+        {/* Interaction Rules & Boosters */}
         <GameMechanics />
 
-        {/* Android Compatibility & Standards */}
+        {/* Android Hardware Standards */}
         <TechSpecs />
 
-        {/* Accessible FAQ Accordion */}
+        {/* Frequently Asked Questions */}
         <FaqSection />
 
-        {/* Download Banner on Google Play */}
+        {/* Download Call to Action */}
         <DownloadCta />
       </main>
 
-      {/* Polished Game Footer with Legal Links */}
+      {/* Legal & Compliance Footer */}
       <GameFooter />
     </div>
   );

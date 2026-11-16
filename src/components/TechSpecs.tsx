@@ -1,7 +1,8 @@
 import React from 'react';
+import { IconDeviceAndroid, IconStorage, IconBattery, IconShieldCheck } from './icons/GameIcons';
 
 interface SpecRow {
-  icon: string;
+  icon: React.ReactNode;
   label: string;
   title: string;
   description: string;
@@ -9,45 +10,45 @@ interface SpecRow {
 
 const SPECS: SpecRow[] = [
   { 
-    icon: '📱', 
+    icon: <IconDeviceAndroid className="w-5 h-5 text-zinc-900" />,
     label: 'Compatibility', 
     title: 'Android 8.0 & Newer', 
-    description: 'Works smoothly across phones and tablets, covering over 95% of active Android devices.' 
+    description: 'Fully supported across active Android smartphones and tablets, testing positive on over 95% of active devices.' 
   },
   { 
-    icon: '🪶', 
-    label: 'Storage', 
+    icon: <IconStorage className="w-5 h-5 text-zinc-900" />,
+    label: 'App Footprint', 
     title: '< 40 MB Download', 
-    description: 'Installs in seconds without eating up your precious storage space or mobile data.' 
+    description: 'Compressed asset delivery allows rapid installation without consuming cellular data allowances or internal device storage.' 
   },
   { 
-    icon: '🔋', 
-    label: 'Efficiency', 
-    title: 'Battery & Heat Friendly', 
-    description: 'Flutter & Flame 2D architecture designed for low CPU overhead and sustained cool gameplay.' 
+    icon: <IconBattery className="w-5 h-5 text-zinc-900" />,
+    label: 'Thermal Profile', 
+    title: 'Battery & GPU Efficient', 
+    description: 'Compiled natively via Flutter with Flame 2D rendering shaders to maintain low operating temperature and minimal battery drain.' 
   },
   { 
-    icon: '🛡️', 
-    label: 'Privacy', 
-    title: 'Zero Intrusive Permissions', 
-    description: 'No access requested to your camera, microphone, photos, contacts, or GPS location.' 
+    icon: <IconShieldCheck className="w-5 h-5 text-zinc-900" />,
+    label: 'Device Sandbox', 
+    title: 'Zero Intrusive Access', 
+    description: 'Operates strictly within Android user sandbox. Never requests access to camera, microphone, contacts, location, or local files.' 
   },
 ];
 
 export const TechSpecs: React.FC = () => {
   return (
-    <section id="specs" className="py-18 sm:py-24 bg-stone-50/70 border-b border-stone-200/60">
+    <section id="specs" className="py-20 sm:py-28 bg-[#FBFBFA] border-b border-zinc-200/80">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs uppercase font-extrabold tracking-wider text-emerald-700 bg-emerald-100/80 border border-emerald-200 px-3.5 py-1 rounded-full">
-            Engineering Standards
+        <div className="max-w-2xl mb-14">
+          <span className="text-xs uppercase font-mono tracking-wider text-zinc-500 font-semibold block mb-2">
+            Engineering Rigor
           </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-black text-stone-900 tracking-tight">
-            Crafted with Care for Android
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight">
+            Built to Respect Your Device
           </h2>
-          <p className="mt-3 text-base text-stone-600 leading-relaxed">
-            Engineered to respect your device, battery, storage, and privacy.
+          <p className="mt-4 text-base text-zinc-600 leading-relaxed font-normal">
+            Technical standards engineered to deliver dependable performance, minimal disk footprint, and verified user security.
           </p>
         </div>
 
@@ -55,18 +56,22 @@ export const TechSpecs: React.FC = () => {
           {SPECS.map((spec, index) => (
             <div 
               key={index}
-              className="p-6 rounded-2xl bg-white border border-stone-200/80 shadow-2xs hover:border-emerald-300 transition-colors"
+              className="p-6 rounded-2xl bg-white border border-zinc-200/80 shadow-2xs hover:border-zinc-300 transition-colors flex flex-col justify-between"
             >
-              <div className="text-3xl mb-3">{spec.icon}</div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-stone-600 block">
-                {spec.label}
-              </span>
-              <h3 className="text-base font-bold text-stone-900 mt-1">
-                {spec.title}
-              </h3>
-              <p className="text-xs text-stone-600 mt-1.5 leading-relaxed">
-                {spec.description}
-              </p>
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-zinc-100 border border-zinc-200 flex items-center justify-center mb-4">
+                  {spec.icon}
+                </div>
+                <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-400 font-medium block">
+                  {spec.label}
+                </span>
+                <h3 className="text-base font-bold text-zinc-900 mt-1">
+                  {spec.title}
+                </h3>
+                <p className="text-xs text-zinc-600 mt-2 leading-relaxed font-normal">
+                  {spec.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>

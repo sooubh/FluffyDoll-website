@@ -3,41 +3,42 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { FluffyDollLogo } from './FluffyDollLogo';
+import { IconGooglePlay } from './icons/GameIcons';
 
 export const GameNavbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-pink-100/80 shadow-2xs transition-all">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
-        {/* Logo */}
+    <header className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-zinc-200/80 transition-all">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        {/* Brand Logo */}
         <Link 
           href="/" 
-          className="hover:opacity-90 transition-opacity focus:outline-hidden focus-visible:ring-2 focus-visible:ring-pink-500 rounded-xl"
+          className="hover:opacity-90 transition-opacity focus:outline-hidden focus-visible:ring-2 focus-visible:ring-zinc-400 rounded-lg"
         >
           <FluffyDollLogo size="md" />
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-7 text-sm font-semibold text-stone-600">
-          <a href="#features" className="hover:text-pink-600 transition-colors">
+        <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-zinc-600">
+          <a href="#features" className="hover:text-zinc-950 transition-colors">
             Features
           </a>
-          <a href="#dolls" className="hover:text-pink-600 transition-colors">
-            Meet the Dolls
+          <a href="#dolls" className="hover:text-zinc-950 transition-colors">
+            Companions
           </a>
-          <a href="#gameplay" className="hover:text-pink-600 transition-colors">
-            How to Play
+          <a href="#gameplay" className="hover:text-zinc-950 transition-colors">
+            How It Works
           </a>
-          <a href="#specs" className="hover:text-pink-600 transition-colors">
-            Specs
+          <a href="#specs" className="hover:text-zinc-950 transition-colors">
+            Standards
           </a>
-          <a href="#faq" className="hover:text-pink-600 transition-colors">
+          <a href="#faq" className="hover:text-zinc-950 transition-colors">
             FAQ
           </a>
           <Link 
             href="/privacy-policy" 
-            className="flex items-center gap-1.5 text-stone-600 hover:text-stone-900 transition-colors text-xs bg-stone-100 hover:bg-stone-200/80 px-3 py-1.5 rounded-full font-medium"
+            className="flex items-center gap-1.5 text-zinc-600 hover:text-zinc-950 transition-colors text-xs bg-zinc-100 hover:bg-zinc-200/70 px-3 py-1.5 rounded-full font-medium border border-zinc-200/70"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
             Privacy Policy
@@ -48,12 +49,10 @@ export const GameNavbar: React.FC = () => {
         <div className="hidden md:flex items-center gap-3">
           <a
             href="#download"
-            className="inline-flex items-center gap-2 px-4.5 py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-semibold text-xs shadow-md shadow-stone-900/10 hover:shadow-stone-900/20 transition-all active:scale-95"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white font-medium text-xs shadow-2xs transition-all active:scale-95"
           >
-            <svg className="w-4 h-4 fill-current text-white" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M3.609 1.814L13.792 12 3.61 22.186a1.996 1.996 0 0 1-.61-1.423V3.237c0-.55.228-1.047.609-1.423zm11.235 11.238l2.585-2.585-12.18-7.032 9.595 9.617zm0 1.896l-9.595 9.617 12.18-7.032-2.585-2.585zm1.052-1.052l3.418 1.973c.96.554.96 1.458 0 2.012l-2.482 1.433-2.316-2.316 1.38-3.102z" />
-            </svg>
-            Play on Android
+            <IconGooglePlay className="w-3.5 h-3.5 fill-current text-white" />
+            <span>Get on Android</span>
           </a>
         </div>
 
@@ -61,16 +60,16 @@ export const GameNavbar: React.FC = () => {
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 rounded-xl text-stone-600 hover:text-stone-900 hover:bg-pink-50 transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-pink-500"
+          className="md:hidden p-2 rounded-lg text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-zinc-400"
           aria-expanded={mobileMenuOpen}
           aria-label="Toggle navigation menu"
         >
           {mobileMenuOpen ? (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           ) : (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           )}
@@ -79,50 +78,50 @@ export const GameNavbar: React.FC = () => {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-pink-100 bg-white/95 backdrop-blur-md px-5 py-5 space-y-3 shadow-lg">
-          <nav className="flex flex-col space-y-2 text-base font-semibold text-stone-700">
+        <div className="md:hidden border-t border-zinc-200 bg-white px-5 py-4 space-y-3 shadow-lg">
+          <nav className="flex flex-col space-y-1.5 text-sm font-medium text-zinc-700">
             <a 
               href="#features" 
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg hover:bg-pink-50 hover:text-pink-600 transition-colors"
+              className="px-3 py-2 rounded-lg hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
             >
               Features
             </a>
             <a 
               href="#dolls" 
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg hover:bg-pink-50 hover:text-pink-600 transition-colors"
+              className="px-3 py-2 rounded-lg hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
             >
-              Meet the Dolls
+              Companions
             </a>
             <a 
               href="#gameplay" 
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg hover:bg-pink-50 hover:text-pink-600 transition-colors"
+              className="px-3 py-2 rounded-lg hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
             >
-              How to Play
+              How It Works
             </a>
             <a 
               href="#specs" 
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg hover:bg-pink-50 hover:text-pink-600 transition-colors"
+              className="px-3 py-2 rounded-lg hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
             >
-              Android Specs
+              Standards
             </a>
             <a 
               href="#faq" 
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg hover:bg-pink-50 hover:text-pink-600 transition-colors"
+              className="px-3 py-2 rounded-lg hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
             >
               Frequently Asked Questions
             </a>
             <Link 
               href="/privacy-policy" 
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 text-sm flex items-center justify-between"
+              className="px-3 py-2.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-800 text-xs flex items-center justify-between"
             >
               <span>Legal Privacy Policy</span>
-              <span className="text-[10px] font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">Google Play Verified</span>
+              <span className="text-[10px] font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">Google Play</span>
             </Link>
           </nav>
 
@@ -130,9 +129,10 @@ export const GameNavbar: React.FC = () => {
             <a
               href="#download"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-stone-900 text-white font-bold text-sm shadow-md"
+              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-900 text-white font-medium text-xs shadow-xs"
             >
-              Get on Google Play
+              <IconGooglePlay className="w-4 h-4 fill-current text-white" />
+              <span>Get on Google Play</span>
             </a>
           </div>
         </div>
